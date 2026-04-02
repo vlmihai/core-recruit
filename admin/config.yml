@@ -1,0 +1,134 @@
+# ============================================================
+# Netlify CMS Configuration — Core Recruit
+# This file defines what content editors can manage in /admin
+# ============================================================
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/core-recruit  # ← Replace with your GitHub repo
+  branch: main
+
+# Where uploaded images are stored
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Show editorial workflow (draft → review → publish)
+publish_mode: editorial_workflow
+
+collections:
+
+  # ----------------------------------------------------------
+  # JOB LISTINGS — managed in careers.html
+  # ----------------------------------------------------------
+  - name: "jobs"
+    label: "Poziții deschise"
+    label_singular: "Poziție"
+    folder: "content/jobs"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{company}} ({{status}})"
+    fields:
+      - { label: "Titlu poziție", name: "title", widget: "string", hint: "Ex: Senior Developer" }
+      - { label: "Companie", name: "company", widget: "string", hint: "Ex: Tech Company Cluj" }
+      - { label: "Locație", name: "location", widget: "string", default: "Cluj-Napoca" }
+      - label: "Tip angajare"
+        name: "type"
+        widget: "select"
+        options: ["Full-time", "Part-time", "Hybrid", "Remote", "On-site"]
+      - label: "Categorie"
+        name: "category"
+        widget: "select"
+        options: ["IT", "Marketing", "HR", "Financiar", "Vânzări", "Management", "Producție", "Altele"]
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Deschis", value: "open" }
+          - { label: "Urgent", value: "urgent" }
+          - { label: "Închis", value: "closed" }
+        default: "open"
+      - { label: "Link aplicare", name: "applyLink", widget: "string", hint: "URL sau mailto:office@core-recruit.ro?subject=Aplicatie+Titlu" }
+      - { label: "Descriere scurtă", name: "description", widget: "text", hint: "2-3 rânduri despre poziție" }
+      - { label: "Responsabilități", name: "responsibilities", widget: "markdown", required: false }
+      - { label: "Cerințe", name: "requirements", widget: "markdown", required: false }
+      - { label: "Data publicării", name: "date", widget: "datetime" }
+
+  # ----------------------------------------------------------
+  # TEAM MEMBERS — managed in about.html
+  # ----------------------------------------------------------
+  - name: "team"
+    label: "Echipa"
+    label_singular: "Membru echipă"
+    folder: "content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nume", name: "name", widget: "string" }
+      - { label: "Rol / Titlu", name: "role", widget: "string", hint: "Ex: Cofounder & Business Developer" }
+      - { label: "Biografie", name: "bio", widget: "text" }
+      - { label: "Fotografie", name: "photo", widget: "image", required: false, hint: "Încarcă o fotografie profesională" }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+      - { label: "Ordine afișare", name: "order", widget: "number", default: 1 }
+
+  # ----------------------------------------------------------
+  # TESTIMONIALS — managed in partners.html
+  # ----------------------------------------------------------
+  - name: "testimonials"
+    label: "Testimoniale"
+    label_singular: "Testimonial"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Citat", name: "quote", widget: "text" }
+      - { label: "Nume", name: "name", widget: "string" }
+      - { label: "Rol", name: "role", widget: "string" }
+      - { label: "Companie", name: "company", widget: "string" }
+      - { label: "Inițiale (pt avatar)", name: "initial", widget: "string", hint: "Ex: DB (pentru Daniel Bejan)", pattern: ['.{1,3}', "Maxim 3 caractere"] }
+      - { label: "Logo companie", name: "logo", widget: "image", required: false }
+
+  # ----------------------------------------------------------
+  # PARTNERS (logos only) — managed in partners.html
+  # ----------------------------------------------------------
+  - name: "partners"
+    label: "Parteneri (logo-uri)"
+    label_singular: "Partener"
+    folder: "content/partners"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nume companie", name: "name", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Ordine afișare", name: "order", widget: "number", default: 1 }
+
+  # ----------------------------------------------------------
+  # SITE SETTINGS — contact info, social links etc.
+  # ----------------------------------------------------------
+  - name: "settings"
+    label: "Setări site"
+    files:
+      - label: "Informații contact"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telefon", name: "phone", widget: "string" }
+          - { label: "Adresă", name: "address", widget: "string" }
+          - { label: "Oraș", name: "city", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Google Maps URL", name: "maps", widget: "string" }
+
+      - label: "Setări pagina principală"
+        name: "homepage"
+        file: "content/settings/homepage.json"
+        fields:
+          - { label: "Titlu Hero (rând 1)", name: "hero_line1", widget: "string" }
+          - { label: "Titlu Hero (rând 2 — bold)", name: "hero_line2", widget: "string" }
+          - { label: "Titlu Hero (rând 3 — italic)", name: "hero_line3", widget: "string" }
+          - { label: "Descriere Hero", name: "hero_desc", widget: "text" }
+          - { label: "Ani experiență", name: "stat_years", widget: "string", default: "10+" }
+          - { label: "Plasări reușite", name: "stat_placements", widget: "string", default: "200+" }
+          - { label: "Parteneri", name: "stat_partners", widget: "string", default: "50+" }

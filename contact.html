@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Core Recruit</title>
+<meta name="description" content="Contactează Core Recruit — recrutare și HR în Cluj-Napoca. office@core-recruit.ro · 0264 702 345">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .contact-main { padding: 6rem 4rem; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+  .contact-left .section-title { margin-bottom: 1.2rem; }
+  .contact-left p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.9; font-weight: 300; max-width: 360px; margin-bottom: 2.5rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .cdetail-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .cdetail-val { font-size: 0.9rem; color: var(--text-mid); }
+  .cdetail-val a { color: var(--blue); text-decoration: none; }
+  .social-links { display: flex; gap: 1rem; }
+  .social-link { font-size: 0.75rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s; }
+  .social-link:hover { color: var(--blue); }
+
+  .contact-form-wrap { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .contact-form-wrap input,
+  .contact-form-wrap textarea,
+  .contact-form-wrap select {
+    width: 100%; background: var(--bg); border: 1px solid var(--border-strong);
+    color: var(--text); padding: 0.85rem 1rem; font-family: 'Inter', sans-serif;
+    font-size: 0.875rem; outline: none; transition: border-color 0.2s; font-weight: 300;
+    -webkit-appearance: none;
+  }
+  .contact-form-wrap input::placeholder,
+  .contact-form-wrap textarea::placeholder { color: var(--text-muted); }
+  .contact-form-wrap input:focus,
+  .contact-form-wrap textarea:focus,
+  .contact-form-wrap select:focus { border-color: var(--blue); background: var(--white); }
+  .contact-form-wrap textarea { resize: vertical; min-height: 130px; }
+  .form-submit-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  #form-status { font-size: 0.82rem; }
+  #form-status.success { color: #1a6e1a; }
+  #form-status.error { color: var(--red); }
+
+  /* EmailJS notice */
+  .emailjs-note { background: var(--bg2); border: 1px solid var(--border); padding: 0.9rem 1.2rem; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .emailjs-note strong { color: var(--blue); }
+
+  .map-section { padding: 0 4rem 6rem; background: var(--white); }
+  .map-embed { width: 100%; height: 380px; border: 1px solid var(--border); background: var(--bg2); display: flex; align-items: center; justify-content: center; }
+  .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+  @media (max-width: 960px) {
+    .contact-main { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .map-section { padding: 0 1.5rem 4rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Core<span>.</span>Recruit</a>
+  <ul>
+    <li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li>
+    <li><a href="services.html">Servicii</a></li><li><a href="careers.html">Cariere</a></li>
+    <li><a href="partners.html">Parteneri</a></li><li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contactează-ne</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Acasă</a><a href="about.html">Despre noi</a><a href="services.html">Servicii</a>
+  <a href="careers.html">Cariere</a><a href="partners.html">Parteneri</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Hai să vorbim</span></div>
+  <h1>Contactează-ne<br>pentru o <em>consultație gratuită</em></h1>
+  <p>Contactează-ne ca să descoperi cum te pot ajuta serviciile noastre.</p>
+</div>
+
+<section class="contact-main">
+  <div class="contact-left fade-in">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Informații de contact</span></div>
+    <div class="section-title">Să vorbim despre <strong>echipa ta</strong></div>
+    <p>Suntem la un email sau apel distanță. Spune-ne cu ce te putem ajuta și îți răspundem în cel mult 24 ore.</p>
+    <div class="contact-details">
+      <div>
+        <div class="cdetail-label">Email</div>
+        <div class="cdetail-val"><a href="mailto:office@core-recruit.ro">office@core-recruit.ro</a></div>
+      </div>
+      <div>
+        <div class="cdetail-label">Telefon</div>
+        <div class="cdetail-val"><a href="tel:+40264702345">0264 702 345</a></div>
+      </div>
+      <div>
+        <div class="cdetail-label">Adresă</div>
+        <div class="cdetail-val">Piața Mihai Viteazu 38, Ap.1<br>Cluj-Napoca 400000, România</div>
+      </div>
+      <div>
+        <div class="cdetail-label">Program</div>
+        <div class="cdetail-val">Luni – Vineri: 09:00 – 18:00</div>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/corerecruit.ro/" target="_blank" class="social-link">Facebook</a>
+      <a href="https://www.linkedin.com/company/core-recruit/" target="_blank" class="social-link">LinkedIn</a>
+      <a href="https://maps.google.com/?cid=15807430511712854046" target="_blank" class="social-link">Google Maps</a>
+    </div>
+  </div>
+
+  <div class="fade-in">
+    <div class="emailjs-note">
+      <strong>EmailJS nu este configurat.</strong> Urmează ghidul de setup pentru a activa trimiterea de emailuri. Momentan, formul trimite pe <strong>office@core-recruit.ro</strong> via mailto.
+    </div>
+    <form class="contact-form-wrap" id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nume *</label>
+          <input type="text" name="from_name" placeholder="Numele tău" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email *</label>
+          <input type="email" name="from_email" placeholder="Email-ul tău" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Companie</label>
+        <input type="text" name="company" placeholder="Numele companiei">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Telefon</label>
+        <input type="tel" name="phone" placeholder="Numărul tău de telefon">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Serviciu dorit</label>
+        <select name="service">
+          <option value="">Selectează un serviciu...</option>
+          <option value="recrutare">Recrutare</option>
+          <option value="teambuilding">Team-building</option>
+          <option value="training">Training Soft Skills</option>
+          <option value="consultanta">Consultanță HR</option>
+          <option value="altele">Altele</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mesaj *</label>
+        <textarea name="message" placeholder="Cu ce te putem ajuta? Descrie pe scurt nevoia ta..." required></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button type="submit" class="btn-primary" id="submit-btn">Trimite mesajul</button>
+        <span id="form-status"></span>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem;">Prin trimiterea acestui formular ești de acord cu utilizarea datelor tale personale. <a href="#" style="color:var(--blue);">Protecția datelor</a></p>
+    </form>
+  </div>
+</section>
+
+<div class="map-section">
+  <div class="map-embed">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.1234567890!2d23.5897!3d46.7712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47490c1234567890%3A0xdb3c7c5e44a8349e!2sPia%C8%9Ba%20Mihai%20Viteazu%2038%2C%20Cluj-Napoca!5e0!3m2!1sro!2sro!4v1234567890"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand"><a href="index.html" class="footer-logo">Core<span>.</span>Recruit</a><p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p></div>
+  <div class="footer-col"><h4>Navigare</h4><ul><li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li><li><a href="services.html">Servicii</a></li><li><a href="careers.html">Cariere</a></li><li><a href="partners.html">Parteneri</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="footer-col"><h4>Contact</h4><p>Piața Mihai Viteazu 38, Ap.1<br>Cluj-Napoca, România<br><br>office@core-recruit.ro<br>0264 702 345</p></div>
+</footer>
+<div class="footer-bottom">
+  <span class="footer-copy">©2024 Core Recruit. Toate drepturile rezervate.</span>
+  <div class="footer-social"><a href="https://www.facebook.com/corerecruit.ro/" target="_blank">Facebook</a><a href="https://www.linkedin.com/company/core-recruit/" target="_blank">LinkedIn</a></div>
+</div>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+// ============================================================
+// EMAILJS SETUP — Contact Form
+// HOW TO SET UP:
+// 1. Go to https://www.emailjs.com and create a free account
+// 2. Add an Email Service (Gmail, Outlook, etc.)
+// 3. Create an Email Template — use variables: {{from_name}}, {{from_email}}, {{company}}, {{phone}}, {{service}}, {{message}}
+// 4. Copy your Public Key, Service ID, and Template ID below
+// 5. That's it! The form will now send emails to office@core-recruit.ro
+// ============================================================
+
+const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+const isEmailJSConfigured = EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY';
+
+if (isEmailJSConfigured) {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+  document.querySelector('.emailjs-note').style.display = 'none';
+}
+
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('form-status');
+  btn.textContent = 'Se trimite...';
+  btn.disabled = true;
+  status.textContent = '';
+  status.className = '';
+
+  if (isEmailJSConfigured) {
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this);
+      status.textContent = 'Mesaj trimis cu succes! Te contactăm în 24 ore.';
+      status.className = 'success';
+      this.reset();
+    } catch (err) {
+      status.textContent = 'Eroare la trimitere. Contactează-ne direct la office@core-recruit.ro';
+      status.className = 'error';
+    }
+  } else {
+    // Fallback: open default email client
+    const name = this.from_name.value;
+    const email = this.from_email.value;
+    const company = this.company.value;
+    const service = this.service.value;
+    const message = this.message.value;
+    const subject = encodeURIComponent(`Contact Core Recruit — ${service || 'Mesaj nou'}`);
+    const body = encodeURIComponent(`Nume: ${name}\nEmail: ${email}\nCompanie: ${company}\nServiciu: ${service}\n\nMesaj:\n${message}`);
+    window.location.href = `mailto:office@core-recruit.ro?subject=${subject}&body=${body}`;
+    status.textContent = 'Se deschide clientul de email...';
+    status.className = 'success';
+  }
+
+  btn.textContent = 'Trimite mesajul';
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>
