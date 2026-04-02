@@ -5,7 +5,7 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/core-recruit  # ← Replace with your GitHub repo
+  repo: lucian.voicu@core-recruit.ro/core-recruit  # ← Replace with your GitHub repo
   branch: main
 
 # Where uploaded images are stored
