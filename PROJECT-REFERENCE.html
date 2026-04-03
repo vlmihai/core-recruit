@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Recruit — Complete Project Reference Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--blue:#1a3d9e;--red:#c0251f;--bg:#eef3fa;--white:#fff;--text:#0d1f4a;--muted:#7a8fb0;--border:rgba(26,61,158,0.12)}
+  body{font-family:'Inter',sans-serif;background:#f4f6fb;color:var(--text);line-height:1.6}
+
+  .header{background:var(--blue);padding:3rem 4rem;position:relative;overflow:hidden}
+  .header::after{content:'CR';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:200px;font-weight:300;color:rgba(255,255,255,0.04);pointer-events:none}
+  .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+  .header-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;color:white}
+  .header-logo span{color:var(--red)}
+  .header-date{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase}
+  .header h1{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:white;margin-bottom:0.5rem}
+  .header h1 strong{font-weight:600}
+  .header p{color:rgba(255,255,255,0.55);font-size:0.9rem;max-width:600px}
+
+  .toc{background:white;border:1px solid var(--border);padding:2rem 2.5rem;max-width:960px;margin:2rem auto 0}
+  .toc-title{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem}
+  .toc-title::after{content:'';flex:1;height:1px;background:var(--border)}
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem 2rem}
+  .toc a{color:var(--blue);font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:0.5rem;padding:0.3rem 0;border-bottom:1px solid transparent;transition:border-color 0.2s}
+  .toc a:hover{border-bottom-color:rgba(26,61,158,0.2)}
+  .toc a::before{content:'→';color:var(--red);font-size:0.7rem;flex-shrink:0}
+
+  .content{max-width:960px;margin:0 auto;padding:2rem}
+  .section{background:white;border:1px solid var(--border);margin-bottom:1.5rem;overflow:hidden}
+  .section-header{background:var(--blue);padding:1.2rem 2rem;display:flex;align-items:center;gap:1.5rem}
+  .section-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,0.2);line-height:1;min-width:40px}
+  .section-title-wrap{}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:white}
+  .section-subtitle{font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:0.1rem;letter-spacing:0.06em;text-transform:uppercase}
+  .section-body{padding:2rem}
+
+  p{font-size:0.875rem;color:#3a4e7a;line-height:1.8;margin-bottom:0.8rem}
+  p:last-child{margin-bottom:0}
+  p strong{color:var(--text)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);margin:1.8rem 0 0.8rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+  h3:first-child{margin-top:0;padding-top:0;border-top:none}
+  h4{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin:1.2rem 0 0.5rem}
+  ul,ol{padding-left:1.5rem;font-size:0.875rem;color:#3a4e7a;line-height:1.9;margin-bottom:0.8rem}
+  li{margin-bottom:0.3rem}
+  li strong{color:var(--text)}
+  a{color:var(--blue)}
+  code{background:#e4edf8;padding:0.1rem 0.45rem;font-family:monospace;font-size:0.8rem;color:var(--blue);border-radius:2px}
+  .code-block{background:var(--text);color:#a8c4f0;padding:1.2rem 1.5rem;font-family:monospace;font-size:0.78rem;line-height:1.8;margin:1rem 0;overflow-x:auto;white-space:pre}
+  .code-block .c{color:rgba(168,196,240,0.35)}
+  .code-block .folder{color:#f0c060}
+
+  .tip{background:#eef3fa;border-left:3px solid var(--blue);padding:0.9rem 1.2rem;margin:1rem 0;font-size:0.82rem;color:#3a4e7a}
+  .tip strong{color:var(--blue)}
+  .warn{background:#fdf0ef;border-left:3px solid var(--red);padding:0.9rem 1.2rem;margin:1rem 0;font-size:0.82rem;color:#7a2020}
+  .warn strong{color:var(--red)}
+  .ok{background:#edfaf2;border-left:3px solid #1a7a3d;padding:0.9rem 1.2rem;margin:1rem 0;font-size:0.82rem;color:#1a4a2a}
+  .ok strong{color:#1a7a3d}
+
+  table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:1rem 0}
+  th{background:var(--blue);color:white;padding:0.65rem 1rem;text-align:left;font-weight:500;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase}
+  td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:#3a4e7a;vertical-align:top}
+  tr:nth-child(even) td{background:#f4f6fb}
+
+  .badge{display:inline-block;padding:0.15rem 0.55rem;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;vertical-align:middle;margin-left:0.3rem}
+  .done{background:rgba(26,122,61,0.1);color:#1a7a3d;border:1px solid rgba(26,122,61,0.2)}
+  .todo{background:rgba(192,37,31,0.08);color:var(--red);border:1px solid rgba(192,37,31,0.2)}
+  .opt{background:rgba(26,61,158,0.08);color:var(--blue);border:1px solid rgba(26,61,158,0.2)}
+
+  .checklist{list-style:none;padding:0;display:flex;flex-direction:column;gap:2px;margin:1rem 0}
+  .checklist li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.875rem;color:#3a4e7a;padding:0.65rem 0.9rem;border:1px solid var(--border)}
+  .checklist li.c-done{background:#edfaf2;border-color:rgba(26,122,61,0.15)}
+  .checklist li.c-done::before{content:'✓';color:#1a7a3d;font-weight:600;flex-shrink:0;margin-top:1px}
+  .checklist li.c-todo::before{content:'○';color:var(--muted);flex-shrink:0;margin-top:1px}
+  .checklist li.c-imp::before{content:'!';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px}
+
+  .steps{display:flex;flex-direction:column;gap:1px;background:var(--border);margin:1rem 0}
+  .step{background:white;padding:1.1rem 1.4rem;display:flex;gap:1.2rem;align-items:flex-start}
+  .step-n{width:26px;height:26px;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:500;flex-shrink:0;margin-top:1px}
+  .step p{font-size:0.875rem;color:#3a4e7a;line-height:1.7;margin:0}
+  .step p strong{color:var(--text);display:block;margin-bottom:0.15rem}
+
+  .footer{background:var(--text);padding:2rem 4rem;margin-top:2rem;display:flex;justify-content:space-between;align-items:center}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:white;font-weight:300}
+  .footer-logo span{color:var(--red)}
+  .footer-right{font-size:0.72rem;color:rgba(255,255,255,0.3)}
+
+  @media(max-width:700px){
+    .header,.content,.footer{padding:1.5rem}
+    .toc{padding:1.5rem;margin:1.5rem}
+    .toc-grid{grid-template-columns:1fr}
+    .section-body{padding:1.5rem}
+    .footer{flex-direction:column;gap:0.5rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="header-logo">Core<span>.</span>Recruit</div>
+    <div class="header-date">Project Reference · April 2026</div>
+  </div>
+  <h1>Website Rebuild — <strong>Complete Reference Guide</strong></h1>
+  <p>Tot ce s-a discutat, decis și construit. Păstrează acest document — vei reveni la el oricând ai nevoie de ajutor.</p>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Cuprins</div>
+  <div class="toc-grid">
+    <a href="#status">Status proiect & checklist</a>
+    <a href="#design">Decizii de design</a>
+    <a href="#files">Structura fișierelor</a>
+    <a href="#cms">Cum funcționează CMS-ul</a>
+    <a href="#github">GitHub — ghid pas cu pas</a>
+    <a href="#netlify">Netlify — setup & deploy</a>
+    <a href="#admin">Cum folosești /admin</a>
+    <a href="#jobs">Cum adaugi / ștergi un job</a>
+    <a href="#team">Cum editezi echipa</a>
+    <a href="#emailjs">Formular contact — EmailJS</a>
+    <a href="#domain">Conectare domeniu</a>
+    <a href="#maintenance">Pagina de mentenanță</a>
+    <a href="#troubleshooting">Probleme întâlnite & soluții</a>
+    <a href="#future">Ce mai rămâne de făcut</a>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- 01 STATUS -->
+  <div class="section" id="status">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Status proiect</div>
+        <div class="section-subtitle">Ce e gata și ce mai rămâne</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li class="c-done">Design nou creat — Minimal &amp; Elegant, light blue tones, brand colors Red + Blue</li>
+        <li class="c-done">6 pagini HTML construite: Home, Despre noi, Servicii, Cariere, Parteneri, Contact</li>
+        <li class="c-done">Netlify CMS integrat — admin panel la /admin</li>
+        <li class="c-done">Conținut copiat de pe site-ul vechi Wix (servicii, testimoniale, parteneri, echipă)</li>
+        <li class="c-done">3 membri echipă configurați (Cristina Jurconi + 2 placeholder-uri)</li>
+        <li class="c-done">2 job-uri demo create (Marketing Lead, Senior Developer)</li>
+        <li class="c-done">Fișierele uploadate pe GitHub cu structura corectă</li>
+        <li class="c-done">Site live pe Netlify cu design complet și stiluri funcționale</li>
+        <li class="c-done">Pagina de mentenanță creată (maintenance.html)</li>
+        <li class="c-todo">Activare Netlify Identity — pentru acces la /admin</li>
+        <li class="c-todo">Configurare EmailJS — formular contact funcțional</li>
+        <li class="c-todo">Conectare domeniu core-recruit.ro la Netlify</li>
+        <li class="c-todo">Completare date echipă (membru 2 și 3) din /admin</li>
+        <li class="c-todo">Înlocuire job-uri demo cu job-uri reale din /admin</li>
+        <li class="c-todo">Actualizare config.yml cu username-ul GitHub corect</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 02 DESIGN -->
+  <div class="section" id="design">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Decizii de design</div>
+        <div class="section-subtitle">Stil, culori, fonturi alese</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h3>Stilul ales</h3>
+      <p>Din variantele propuse (Bold &amp; Modern, Clean &amp; Corporate, Warm &amp; Friendly), a fost ales <strong>Minimal &amp; Elegant cu fundal Light Blue tones</strong>.</p>
+      <p>Variantele Bold &amp; Modern cu fundal întunecat au fost respinse — s-a dorit mai multă lumină și mai multă prezență a culorilor de brand.</p>
+
+      <h3>Culorile brandului</h3>
+      <table>
+        <tr><th>Culoare</th><th>Cod Hex</th><th>Utilizare</th></tr>
+        <tr><td><span style="display:inline-block;width:14px;height:14px;background:#1a3d9e;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Albastru principal</td><td><code>#1a3d9e</code></td><td>Nav, hero background, butoane principale, footer, secțiuni "De ce noi"</td></tr>
+        <tr><td><span style="display:inline-block;width:14px;height:14px;background:#c0251f;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Roșu accent</td><td><code>#c0251f</code></td><td>Eyebrow lines, badge Urgent, hover pe link-uri, accentele decorative</td></tr>
+        <tr><td><span style="display:inline-block;width:14px;height:14px;background:#eef3fa;vertical-align:middle;margin-right:6px;border-radius:2px;border:1px solid #ccc;"></span>Fundal principal</td><td><code>#eef3fa</code></td><td>Background pagini, secțiuni alternative</td></tr>
+        <tr><td><span style="display:inline-block;width:14px;height:14px;background:#0d1f4a;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Text / Footer</td><td><code>#0d1f4a</code></td><td>Titluri, text principal, footer background</td></tr>
+        <tr><td><span style="display:inline-block;width:14px;height:14px;background:#7a8fb0;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Text secundar</td><td><code>#7a8fb0</code></td><td>Descrieri, meta-text, placeholder-uri</td></tr>
+      </table>
+
+      <h3>Fonturi</h3>
+      <table>
+        <tr><th>Font</th><th>Utilizare</th><th>Sursa</th></tr>
+        <tr><td><strong>Cormorant Garamond</strong></td><td>Titluri h1/h2/h3, logo, numere mari decorative</td><td>Google Fonts — gratuit</td></tr>
+        <tr><td><strong>Inter</strong></td><td>Corp text, navigare, butoane, descrieri</td><td>Google Fonts — gratuit</td></tr>
+      </table>
+      <p>Ambele fonturi sunt încărcate din Google Fonts în fiecare pagină HTML și nu necesită instalare locală.</p>
+    </div>
+  </div>
+
+  <!-- 03 FILES -->
+  <div class="section" id="files">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Structura fișierelor</div>
+        <div class="section-subtitle">Ce conține ZIP-ul și rolul fiecărui fișier</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>ZIP descărcat: <code>core-recruit-netlify-cms.zip</code>. Toate fișierele trebuie să fie la <strong>rădăcina repository-ului GitHub</strong> — nu într-un subfolder.</p>
+      <div class="code-block"><span class="folder">repository GitHub (rădăcină)/</span>
+├── <span class="folder">admin/</span>
+│   ├── index.html        <span class="c">← panoul de administrare /admin</span>
+│   └── config.yml        <span class="c">← ce secțiuni apar în CMS (job-uri, echipă etc.)</span>
+├── <span class="folder">content/</span>
+│   ├── <span class="folder">jobs/</span>             <span class="c">← fiecare job = un fișier .md</span>
+│   │   ├── marketing-lead.md
+│   │   └── senior-developer.md
+│   ├── <span class="folder">team/</span>             <span class="c">← fiecare membru echipă = un fișier .md</span>
+│   │   ├── cristina-jurconi.md
+│   │   ├── membru-2.md   <span class="c">← placeholder, editează din /admin</span>
+│   │   └── membru-3.md   <span class="c">← placeholder, editează din /admin</span>
+│   └── <span class="folder">settings/</span>
+│       ├── contact.json  <span class="c">← email, telefon, adresă, social links</span>
+│       └── homepage.json <span class="c">← texte hero, statistici</span>
+├── <span class="folder">css/</span>
+│   └── styles.css        <span class="c">← TOATE stilurile (culori, fonturi, layout)</span>
+├── <span class="folder">js/</span>
+│   └── main.js           <span class="c">← meniu mobil, fade-in animații, CMS loader</span>
+├── <span class="folder">images/uploads/</span>       <span class="c">← pozele încărcate din /admin se salvează aici</span>
+├── index.html            <span class="c">← Pagina principală</span>
+├── about.html            <span class="c">← Despre noi (echipă încărcată din CMS)</span>
+├── services.html         <span class="c">← Servicii (Recrutare, Team-building, Training)</span>
+├── careers.html          <span class="c">← Cariere (job-urile încărcate din CMS)</span>
+├── partners.html         <span class="c">← Parteneri și toate testimonialele</span>
+├── contact.html          <span class="c">← Contact cu formular EmailJS</span>
+├── maintenance.html      <span class="c">← Pagina "În curând" pentru mentenanță</span>
+├── netlify.toml          <span class="c">← configurație Netlify (redirects)</span>
+└── SETUP-GUIDE.html      <span class="c">← ghid setup tehnic detaliat</span></div>
+
+      <div class="tip"><strong>Cum să schimbi culori:</strong> Deschide <code>css/styles.css</code> și caută secțiunea <code>:root</code> la începutul fișierului. Acolo sunt toate variabilele de culoare — schimbă valoarea hex și se aplică pe tot site-ul automat.</div>
+    </div>
+  </div>
+
+  <!-- 04 CMS -->
+  <div class="section" id="cms">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Cum funcționează CMS-ul</div>
+        <div class="section-subtitle">Netlify CMS — arhitectura sistemului</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h3>Fluxul complet</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Tu editezi în core-recruit.ro/admin</strong>Adaugi un job, încarci o poză, schimbi un text din setări</p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Netlify CMS salvează automat în GitHub</strong>Creează sau modifică un fișier .md sau .json în repository</p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Netlify detectează modificarea pe GitHub</strong>Pornește automat un redeploy al site-ului</p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Site-ul se actualizează în ~30 secunde</strong>Vizitatorii văd imediat conținutul nou — fără intervenție suplimentară</p></div>
+      </div>
+
+      <h3>Ce poți gestiona din /admin</h3>
+      <table>
+        <tr><th>Secțiunea din admin</th><th>Ce poți face</th><th>Se afișează pe pagina</th></tr>
+        <tr><td>📋 Poziții deschise</td><td>Adaugă, editează, șterge job-uri. Statusuri: Deschis / Urgent / Închis</td><td>careers.html</td></tr>
+        <tr><td>👥 Echipa</td><td>Adaugă membri, upload foto, LinkedIn URL, ordine afișare</td><td>about.html</td></tr>
+        <tr><td>💬 Testimoniale</td><td>Adaugă/editează testimoniale cu citat, nume, rol, companie</td><td>partners.html</td></tr>
+        <tr><td>🏢 Parteneri</td><td>Adaugă logo-uri companii partenere cu link website</td><td>partners.html</td></tr>
+        <tr><td>⚙️ Setări contact</td><td>Email, telefon, adresă, Facebook, LinkedIn, Google Maps</td><td>toate paginile (footer)</td></tr>
+        <tr><td>⚙️ Setări homepage</td><td>Texte hero (rând 1/2/3), descriere, statistici (10+, 200+, 50+)</td><td>index.html</td></tr>
+      </table>
+
+      <div class="tip"><strong>Ce NU se poate edita din /admin</strong> (necesită editare directă a fișierului HTML): textele lungi din pagina Servicii, structura paginilor, elementele de navigare. Pentru acestea — editezi fișierul HTML și faci push prin GitHub Desktop.</div>
+    </div>
+  </div>
+
+  <!-- 05 GITHUB -->
+  <div class="section" id="github">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title-wrap">
+        <div class="section-title">GitHub — ghid pas cu pas</div>
+        <div class="section-subtitle">Cum actualizezi fișierele site-ului</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h3>De ce GitHub</h3>
+      <p>GitHub stochează toate fișierele site-ului. Netlify preia automat orice modificare de pe GitHub și redesployează site-ul. Netlify CMS salvează conținutul (job-uri, echipă etc.) tot în GitHub. Fără GitHub, CMS-ul nu are unde salva datele.</p>
+
+      <h3>Cum actualizezi un fișier HTML (text, structură)</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Editează fișierul pe calculator</strong>Deschide fișierul HTML în VS Code sau orice editor text și fă modificarea dorită</p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Copiază fișierul în folderul clonat</strong>Înlocuiește fișierul vechi din folderul repository-ului local cu cel nou</p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Deschide GitHub Desktop</strong>Vei vedea automat fișierele modificate listate în panoul din stânga</p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Scrie în câmpul Summary (câmpul MIC de sus)</strong>Ex: "update servicii page" — orice text scurt. NU în câmpul mare de jos (Description)</p></div>
+        <div class="step"><div class="step-n">5</div><p><strong>Click "Commit to main"</strong>Butonul devine activ doar după ce Summary-ul e completat</p></div>
+        <div class="step"><div class="step-n">6</div><p><strong>Click "Push origin"</strong>Apare în bara de sus după commit. Site-ul se actualizează automat în ~30 secunde</p></div>
+      </div>
+
+      <div class="warn"><strong>Problemă întâlnită:</strong> Butonul "Commit" nu se activa. Cauza: textul era scris în câmpul mare (Description) în loc de câmpul mic (Summary). Soluție: click în prima casetă mică, de o singură linie, deasupra casetei mari.</div>
+
+      <h3>Cum adaugi foldere noi pe GitHub</h3>
+      <p>Prin browser (github.com) <strong>nu poți uploada foldere</strong> — suportă doar fișiere individuale și nu păstrează structura de directoare. Folosește întotdeauna <strong>GitHub Desktop</strong> pentru foldere.</p>
+      <div class="warn"><strong>Problemă întâlnită:</strong> Când s-au uploadat fișierele prin github.com, folderele <code>css/</code>, <code>js/</code>, <code>admin/</code>, <code>content/</code> nu s-au uploadat — doar fișierele HTML individuale. Asta a cauzat lipsa stilurilor pe site. Soluția: GitHub Desktop → drag &amp; drop foldere → commit + push.</div>
+
+      <h3>Setup inițial GitHub (o singură dată)</h3>
+      <ol>
+        <li>Mergi la <strong>github.com</strong> → Sign up (gratuit)</li>
+        <li>New repository → numește-l <code>core-recruit</code> → Public → Create</li>
+        <li>Descarcă <strong>GitHub Desktop</strong> de la desktop.github.com</li>
+        <li>File → Clone repository → selectează <code>core-recruit</code> → alege folder local</li>
+        <li>Copiază toate fișierele din ZIP în folderul clonat</li>
+        <li>GitHub Desktop → Summary: "initial upload" → Commit → Push origin</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 06 NETLIFY -->
+  <div class="section" id="netlify">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Netlify — setup & deploy</div>
+        <div class="section-subtitle">Hosting, Identity, domeniu</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <h3>Deploy inițial</h3>
+      <ol>
+        <li>Mergi la <strong>netlify.com</strong> → Sign up with GitHub</li>
+        <li>Add new site → Import an existing project → GitHub → selectează <code>core-recruit</code></li>
+        <li>Lasă setările de build goale (site static, fără build command)</li>
+        <li>Deploy site → live în ~30 secunde la <code>xyz.netlify.app</code></li>
+      </ol>
+
+      <h3>Activare Netlify Identity (NECESAR pentru /admin)</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Netlify Dashboard → Site configuration → Identity → Enable Identity</strong></p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Registration → schimbă la "Invite only"</strong>IMPORTANT pentru securitate — altfel oricine poate accesa /admin</p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>External providers → activează GitHub</strong></p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Git Gateway → Enable Git Gateway</strong>Permite CMS-ului să scrie fișiere în GitHub</p></div>
+        <div class="step"><div class="step-n">5</div><p><strong>Identity → Invite users → office@core-recruit.ro</strong>Vei primi email de invitație — click link → setează parola</p></div>
+        <div class="step"><div class="step-n">6</div><p><strong>Mergi la yoursite.netlify.app/admin</strong>Autentifică-te → panoul CMS e activ</p></div>
+      </div>
+
+      <h3>Actualizare config.yml (NECESAR)</h3>
+      <p>Deschide fișierul <code>admin/config.yml</code> pe GitHub și modifică linia:</p>
+      <div class="code-block">backend:
+  name: github
+  repo: <strong>USERNAME-TAU-GITHUB</strong>/core-recruit  ← înlocuiește cu username-ul tău real
+  branch: main</div>
+    </div>
+  </div>
+
+  <!-- 07 ADMIN -->
+  <div class="section" id="admin">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Cum folosești /admin</div>
+        <div class="section-subtitle">Ghid zilnic pentru administrare conținut</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>Accesează <strong>core-recruit.ro/admin</strong> din orice browser. Autentifică-te cu emailul și parola Netlify Identity.</p>
+
+      <h3 id="jobs">Cum adaugi un job nou</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Admin → Poziții deschise → + Poziție nouă</strong></p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Completează câmpurile obligatorii:</strong>Titlu · Companie · Locație · Tip (Full-time / Hybrid etc.) · Categorie · Status · Link aplicare · Descriere scurtă</p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Link aplicare recomandat:</strong><code>mailto:office@core-recruit.ro?subject=Aplicatie+Titlu+Pozitie</code></p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Click "Publică"</strong> → apare pe site în ~30 secunde</p></div>
+      </div>
+      <div class="tip"><strong>Cum închizi o poziție:</strong> Editează job-ul → Status → "Închis" → Publică. Nu mai apare pe site dar rămâne salvat în sistem.</div>
+      <div class="tip"><strong>Cum marchezi ca urgent:</strong> Editează job-ul → Status → "Urgent" → Publică. Apare cu badge roșu "Urgent" pe site.</div>
+      <div class="warn"><strong>Important după publicarea unui job nou:</strong> Deschide fișierul <code>careers.html</code>, găsește array-ul <code>const JOB_SLUGS = [...]</code> și adaugă slug-ul noului job (ex: <code>'hr-manager'</code>). Altfel job-ul e salvat în GitHub dar nu e încărcat pe pagina Cariere.</div>
+
+      <h3 id="team">Cum editezi membrii echipei</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Admin → Echipa → click pe "Nume Prenume" (membru-2 sau membru-3)</strong></p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Completează: Nume, Rol, Biografie, LinkedIn URL, Ordine afișare</strong></p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Upload fotografie:</strong> Click "Choose an image" → Upload → selectează poza → Choose selected. Formate: JPG, PNG, WebP. Max 2MB. Dimensiune recomandată: 800×600px</p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Publică</strong> → apare automat pe pagina Despre noi</p></div>
+      </div>
+
+      <h3>Referință rapidă — timp estimat per acțiune</h3>
+      <table>
+        <tr><th>Acțiune</th><th>Unde în admin</th><th>Timp</th></tr>
+        <tr><td>Adaugă job nou</td><td>Poziții deschise → + Poziție nouă</td><td>2 min</td></tr>
+        <tr><td>Marchează job ca urgent</td><td>Editează job → Status: Urgent</td><td>30 sec</td></tr>
+        <tr><td>Închide un job</td><td>Editează job → Status: Închis</td><td>30 sec</td></tr>
+        <tr><td>Adaugă membru echipă</td><td>Echipa → + Membru nou + upload poză</td><td>3 min</td></tr>
+        <tr><td>Adaugă testimonial</td><td>Testimoniale → + Testimonial nou</td><td>2 min</td></tr>
+        <tr><td>Schimbă date contact</td><td>Setări site → Informații contact</td><td>1 min</td></tr>
+        <tr><td>Schimbă texte hero</td><td>Setări site → Setări homepage</td><td>1 min</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 08 EMAILJS -->
+  <div class="section" id="emailjs">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Formular contact — EmailJS</div>
+        <div class="section-subtitle">Cum activezi trimiterea emailurilor</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>Formularul de contact din <code>contact.html</code> trimite emailuri la <strong>office@core-recruit.ro</strong> prin serviciul EmailJS. Gratuit până la 200 emailuri/lună.</p>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Creează cont gratuit la emailjs.com</strong></p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Email Services → Add New Service → Gmail</strong>Conectează-te cu office@core-recruit.ro · Copiază <code>Service ID</code></p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Email Templates → Create New Template</strong>Folosește variabilele: <code>{{from_name}}</code>, <code>{{from_email}}</code>, <code>{{company}}</code>, <code>{{phone}}</code>, <code>{{service}}</code>, <code>{{message}}</code>. Setează "To email": office@core-recruit.ro. Copiază <code>Template ID</code></p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Account → Public Key</strong>Copiază <code>Public Key</code></p></div>
+        <div class="step"><div class="step-n">5</div><p><strong>Deschide contact.html și caută:</strong><code>const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';</code>Înlocuiește cele 3 valori cu datele copiate din EmailJS</p></div>
+        <div class="step"><div class="step-n">6</div><p><strong>Commit + Push prin GitHub Desktop</strong>Formularul e activ imediat</p></div>
+      </div>
+      <div class="tip"><strong>Fără EmailJS configurat:</strong> Formularul deschide clientul de email local (Outlook, Gmail app) cu câmpurile pre-completate. Nu se pierd datele — utilizatorul trimite manual.</div>
+    </div>
+  </div>
+
+  <!-- 09 DOMAIN -->
+  <div class="section" id="domain">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Conectare domeniu</div>
+        <div class="section-subtitle">core-recruit.ro → Netlify</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="ok"><strong>Nu există downtime la switch!</strong> Site-ul vechi Wix rămâne live până în momentul în care DNS-ul se propagă complet. Nu ai nevoie de pagina de mentenanță pentru tranziție.</div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Netlify → Domain management → Add custom domain</strong>Introdu <code>core-recruit.ro</code></p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Netlify îți dă nameservere</strong>Ex: dns1.p01.nsone.net · dns2.p01.nsone.net</p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Mergi la registrar-ul domeniului</strong>Unde ai cumpărat core-recruit.ro → DNS / Nameservers Settings → înlocuiește nameserver-ele existente cu cele de la Netlify</p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Așteaptă 1–24 ore</strong>Propagarea DNS. SSL/HTTPS se activează automat și gratuit de către Netlify.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 MAINTENANCE -->
+  <div class="section" id="maintenance">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Pagina de mentenanță</div>
+        <div class="section-subtitle">Cum activezi / dezactivezi maintenance.html</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>Fișierul <code>maintenance.html</code> conține o pagină "Revenim în curând" în același stil cu site-ul — cu date de contact, progress bar animat și formular de notificare email.</p>
+
+      <h3>Cum activezi pagina de mentenanță</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>În folderul clonat, redenumește</strong> <code>index.html</code> → <code>index-backup.html</code></p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Redenumește</strong> <code>maintenance.html</code> → <code>index.html</code></p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>GitHub Desktop → Commit → Push</strong> → site-ul arată pagina de mentenanță</p></div>
+      </div>
+
+      <h3>Cum dezactivezi (revii la site normal)</h3>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p>Redenumește <code>index.html</code> (mentenanță) înapoi la <code>maintenance.html</code></p></div>
+        <div class="step"><div class="step-n">2</div><p>Redenumește <code>index-backup.html</code> înapoi la <code>index.html</code></p></div>
+        <div class="step"><div class="step-n">3</div><p>GitHub Desktop → Commit → Push → site normal e live</p></div>
+      </div>
+
+      <h3>Cum modifici progresul afișat</h3>
+      <p>Deschide <code>maintenance.html</code> și caută:</p>
+      <ul>
+        <li><code>width: 75%</code> pe clasa <code>.progress-fill</code> → schimbă procentul</li>
+        <li>Secțiunea <code>.status-list</code> → editează textele și clasele (<code>done</code>, <code>active</code>, <code>pending</code>)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 11 TROUBLESHOOTING -->
+  <div class="section" id="troubleshooting">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Probleme întâlnite & soluții</div>
+        <div class="section-subtitle">Erori reale din această sesiune</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <table>
+        <tr><th>Problema</th><th>Cauza</th><th>Soluția</th></tr>
+        <tr>
+          <td>Site-ul apărea fără stiluri (doar text simplu, fără culori)</td>
+          <td>Folderele <code>css/</code>, <code>js/</code>, <code>admin/</code>, <code>content/</code> nu au fost uploadate — doar fișierele HTML individuale</td>
+          <td>Folosește GitHub Desktop (nu browser) pentru a adăuga folderele. Drag &amp; drop folderele → commit → push</td>
+        </tr>
+        <tr>
+          <td>Butonul "Commit" în GitHub Desktop era gri / inactiv</td>
+          <td>Textul a fost scris în câmpul mare (Description) în loc de câmpul mic (Summary)</td>
+          <td>Click în prima casuță mică de o singură linie (Summary), deasupra casetei mari. Scrie orice text scurt acolo.</td>
+        </tr>
+        <tr>
+          <td>Drag &amp; drop de foldere pe github.com nu păstrează structura</td>
+          <td>Browser-ul GitHub nu suportă upload de foldere cu structură</td>
+          <td>Folosește GitHub Desktop pentru upload de foldere — păstrează structura corect</td>
+        </tr>
+        <tr>
+          <td>Pagina About arăta doar 1 membru echipă în loc de 3</td>
+          <td>Site-ul Wix folosea un slider/carousel care nu se randa în fetch — ceilalți membri erau ascunși în codul JS al slider-ului</td>
+          <td>S-au creat 2 fișiere placeholder în <code>content/team/</code> și pagina About a fost actualizată să încarce dinamic toți 3 membrii din CMS</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 12 FUTURE -->
+  <div class="section" id="future">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Ce mai rămâne de făcut</div>
+        <div class="section-subtitle">Pașii următori în ordine logică</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><p><strong>Actualizează config.yml cu username-ul GitHub</strong>Deschide <code>admin/config.yml</code> → înlocuiește <code>YOUR-GITHUB-USERNAME</code> cu username-ul tău real → commit + push</p></div>
+        <div class="step"><div class="step-n">2</div><p><strong>Activează Netlify Identity</strong>Netlify Dashboard → Identity → Enable → Invite only → Git Gateway → Invite yourself. Vezi secțiunea 06 pentru pași detaliați.</p></div>
+        <div class="step"><div class="step-n">3</div><p><strong>Completează membrii echipei din /admin</strong>Admin → Echipa → editează "Nume Prenume" (x2) → completează date reale + upload poze</p></div>
+        <div class="step"><div class="step-n">4</div><p><strong>Adaugă job-urile reale din /admin</strong>Admin → Poziții deschise → adaugă job-urile active + șterge sau închide demo-urile</p></div>
+        <div class="step"><div class="step-n">5</div><p><strong>Configurează EmailJS</strong>emailjs.com → cont gratuit → service + template → adaugă cheile în contact.html → commit + push. Vezi secțiunea 08.</p></div>
+        <div class="step"><div class="step-n">6</div><p><strong>Conectează domeniul core-recruit.ro</strong>Netlify → Domain management → Add custom domain → copiază nameserver-ele → mergi la registrar → înlocuiește DNS. Vezi secțiunea 09.</p></div>
+      </div>
+
+      <h3>Îmbunătățiri posibile în viitor</h3>
+      <ul>
+        <li>Pagină de <strong>Blog</strong> — colecție de articole gestionată din CMS</li>
+        <li><strong>Formular de aplicare</strong> direct pe pagina unui job (nu doar link mailto)</li>
+        <li><strong>Animații de scroll</strong> mai elaborate pe pagina principală</li>
+        <li><strong>Versiune în engleză</strong> a site-ului (switch de limbă)</li>
+        <li><strong>Google Analytics</strong> pentru statistici de trafic</li>
+        <li><strong>Cookie consent banner</strong> pentru GDPR</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FIȘIERE DESCĂRCATE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Fișierele descărcate în această sesiune</div>
+        <div class="section-subtitle">Păstrează-le în siguranță</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <table>
+        <tr><th>Fișier</th><th>Conținut</th><th>Când îl folosești</th></tr>
+        <tr><td><code>core-recruit-netlify-cms.zip</code></td><td>Site-ul complet cu toate paginile, CMS, CSS, JS, content</td><td>Baza proiectului — tot ce e pe GitHub vine din acest ZIP</td></tr>
+        <tr><td><code>maintenance.html</code></td><td>Pagina "Revenim în curând" în stilul site-ului</td><td>Când faci update-uri majore și vrei să ascunzi temporar site-ul</td></tr>
+        <tr><td><code>core-recruit-redesign.html</code></td><td>Prima versiune a redesign-ului (fișier single-page)</td><td>Referință vizuală pentru design</td></tr>
+        <tr><td><code>PROJECT-REFERENCE.html</code></td><td>Acest document</td><td>Oricând ai nevoie de ajutor sau referință</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-logo">Core<span>.</span>Recruit — <span style="font-weight:300;color:rgba(255,255,255,0.4);">Project Reference Guide</span></div>
+  <div class="footer-right">Generat cu Claude · April 2026 · Păstrează acest document</div>
+</div>
+
+</body>
+</html>
