@@ -7,232 +7,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-  /* CAREERS SECTION WRAPPER */
-  .careers-section { padding: 5rem 4rem; background: var(--white); }
-
-  /* TRAFFIT WIDGET OVERRIDES — matches site design */
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x {
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  /* Filter bar */
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x {
-    margin-bottom: 2rem;
-  }
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x select,
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x input {
-    font-family: 'Inter', sans-serif !important;
-    border: 1px solid rgba(26,61,158,0.2) !important;
-    border-radius: 0 !important;
-    background: var(--bg) !important;
-    color: var(--text) !important;
-    padding: 0.6rem 1rem !important;
-    font-size: 0.82rem !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x button,
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x input[type="submit"] {
-    background: var(--blue) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 0 !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.78rem !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
-    padding: 0.6rem 1.4rem !important;
-    cursor: pointer !important;
-    box-shadow: none !important;
-  }
-
-  /* Job list items */
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .an-item,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .traffit-job,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x li,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .job-item {
-    background: var(--white) !important;
-    border: none !important;
-    border-bottom: 1px solid var(--border) !important;
-    border-radius: 0 !important;
-    padding: 1.8rem 2rem !important;
-    transition: background 0.2s !important;
-    box-shadow: none !important;
-  }
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .an-item:hover,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x li:hover {
-    background: var(--bg) !important;
-  }
-
-  /* Job titles */
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x h2,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x h3,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .an-title,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .job-title {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 1.4rem !important;
-    font-weight: 600 !important;
-    color: var(--text) !important;
-    margin-bottom: 0.4rem !important;
-  }
-
-  /* Job meta info */
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .an-meta,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .job-meta,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x p,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x span {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.82rem !important;
-    color: var(--text-muted) !important;
-  }
-
-  /* Apply / details buttons */
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x a,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .an-btn,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .apply-btn {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.75rem !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
-    color: var(--blue) !important;
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid rgba(26,61,158,0.2) !important;
-    border-radius: 0 !important;
-    padding: 0 0 2px !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-    transition: color 0.2s !important;
-  }
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x a:hover {
-    color: var(--red) !important;
-    border-bottom-color: rgba(192,37,31,0.3) !important;
-  }
-
-  /* Pagination */
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .pagination a,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .pager a {
-    border: 1px solid var(--border-strong) !important;
-    color: var(--text-mid) !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.78rem !important;
-    padding: 0.4rem 0.8rem !important;
-    border-radius: 0 !important;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
-  }
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .pagination a.active,
-  #traffit-an-list-xtxrxaxfxixtx2x0x1x6x .pagination a:hover {
-    background: var(--blue) !important;
-    color: white !important;
-    border-color: var(--blue) !important;
-  }
-
-  /* Loading state */
-  .traffit-loading {
-    padding: 4rem 2rem; text-align: center;
-    color: var(--text-muted); font-size: 0.875rem;
-  }
-  .traffit-loading .spinner {
-    width: 28px; height: 28px;
-    border: 2px solid var(--border);
-    border-top-color: var(--blue);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin: 0 auto 1rem;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* SPONTANEOUS */
-  .spontaneous { background: var(--bg); padding: 5rem 4rem; border-top: 1px solid var(--border); }
-  .spontaneous-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .spontaneous h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--text); margin-bottom: 1rem; }
-  .spontaneous h3 strong { font-weight: 600; }
-  .spontaneous p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1.2rem; }
-  .spont-form { display: flex; flex-direction: column; gap: 1rem; }
-  .spont-form input, .spont-form textarea {
-    width: 100%; background: var(--white); border: 1px solid var(--border-strong);
-    color: var(--text); padding: 0.8rem 1rem; font-family: 'Inter', sans-serif;
-    font-size: 0.875rem; outline: none; transition: border-color 0.2s;
-  }
-  .spont-form input:focus, .spont-form textarea:focus { border-color: var(--blue); }
-  .spont-form textarea { min-height: 100px; resize: vertical; }
-  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  #spont-success {
-    display: none; background: rgba(26,61,158,0.06);
-    border: 1px solid var(--border); padding: 1rem 1.5rem;
-    font-size: 0.875rem; color: var(--blue); margin-top: 0.5rem;
-  }
-
-  @media (max-width: 960px) {
-    .careers-section, .spontaneous { padding: 3.5rem 1.5rem; }
-    .spontaneous-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .form-row-2 { grid-template-columns: 1fr; }
+  .careers-section{padding:5rem 4rem;background:var(--white)}
+  .careers-controls{display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .filter-group{display:flex;gap:0.5rem;flex-wrap:wrap}
+  .filter-btn{background:transparent;border:1px solid var(--border-strong);color:var(--text-muted);padding:0.45rem 1.1rem;font-family:'Inter',sans-serif;font-size:0.75rem;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s;text-transform:uppercase}
+  .filter-btn:hover,.filter-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+  .jobs-count{font-size:0.8rem;color:var(--text-muted)}
+  .jobs-count span{color:var(--blue);font-weight:500}
+  #jobs-container{display:flex;flex-direction:column;gap:1px;background:var(--bg3)}
+  .job-card{background:var(--white);padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;transition:background 0.2s}
+  .job-card:hover{background:var(--bg)}
+  .job-card-tag{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:0.5rem}
+  .job-card-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:0.4rem}
+  .job-card-meta{font-size:0.8rem;color:var(--text-muted);display:flex;gap:1rem;flex-wrap:wrap}
+  .job-card-meta span::before{content:'·';margin-right:0.5rem;color:var(--border-strong)}
+  .job-card-meta span:first-child::before{display:none}
+  .job-card-desc{font-size:0.82rem;color:var(--text-muted);margin-top:0.6rem;line-height:1.6;font-weight:300}
+  .job-card-right{display:flex;flex-direction:column;align-items:flex-end;gap:0.6rem}
+  .job-badge-status{font-size:0.65rem;padding:0.25rem 0.7rem;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+  .status-open{background:rgba(26,61,158,0.08);color:var(--blue);border:1px solid rgba(26,61,158,0.2)}
+  .status-urgent{background:rgba(192,37,31,0.08);color:var(--red);border:1px solid rgba(192,37,31,0.2)}
+  .apply-link{font-size:0.75rem;color:var(--blue);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(26,61,158,0.2);padding-bottom:1px;white-space:nowrap}
+  .apply-link:hover{color:var(--red)}
+  .jobs-empty{padding:4rem 2rem;text-align:center;background:var(--white)}
+  .jobs-empty-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--text-muted);margin-bottom:0.5rem}
+  .spontaneous{background:var(--bg);padding:5rem 4rem;border-top:1px solid var(--border)}
+  .spontaneous-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+  .spontaneous h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--text);margin-bottom:1rem}
+  .spontaneous h3 strong{font-weight:600}
+  .spontaneous p{font-size:0.9rem;color:var(--text-muted);line-height:1.8;font-weight:300;margin-bottom:1.2rem}
+  .spont-form{display:flex;flex-direction:column;gap:1rem}
+  .spont-form input,.spont-form textarea{width:100%;background:var(--white);border:1px solid var(--border-strong);color:var(--text);padding:0.8rem 1rem;font-family:'Inter',sans-serif;font-size:0.875rem;outline:none;transition:border-color 0.2s}
+  .spont-form input:focus,.spont-form textarea:focus{border-color:var(--blue)}
+  .spont-form textarea{min-height:100px;resize:vertical}
+  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  #spont-success{display:none;background:rgba(26,61,158,0.06);border:1px solid var(--border);padding:1rem 1.5rem;font-size:0.875rem;color:var(--blue);margin-top:0.5rem}
+  @media(max-width:960px){
+    .careers-section,.spontaneous{padding:3.5rem 1.5rem}
+    .job-card{grid-template-columns:1fr;gap:1rem}
+    .job-card-right{align-items:flex-start;flex-direction:row}
+    .spontaneous-inner{grid-template-columns:1fr;gap:2.5rem}
+    .form-row-2{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="index.html" class="logo-img-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" class="nav-logo"></a>
+  <a href="index.html" class="logo">Core<span>.</span>Recruit</a>
   <ul>
-    <li><a href="index.html">Acasă</a></li>
-    <li><a href="about.html">Despre noi</a></li>
-    <li><a href="services.html">Servicii</a></li>
-    <li><a href="careers.html" class="active">Cariere</a></li>
-    <li><a href="partners.html">Parteneri</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li>
+    <li><a href="services.html">Servicii</a></li><li><a href="careers.html" class="active">Cariere</a></li>
+    <li><a href="partners.html">Parteneri</a></li><li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">Contactează-ne</a>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Acasă</a>
-  <a href="about.html">Despre noi</a>
-  <a href="services.html">Servicii</a>
-  <a href="careers.html">Cariere</a>
-  <a href="partners.html">Parteneri</a>
-  <a href="contact.html">Contact</a>
+  <a href="index.html">Acasă</a><a href="about.html">Despre noi</a><a href="services.html">Servicii</a>
+  <a href="careers.html">Cariere</a><a href="partners.html">Parteneri</a><a href="contact.html">Contact</a>
 </div>
 
 <div class="page-hero">
   <div class="page-hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Oportunități</span></div>
   <h1>Poziții <strong>deschise</strong><br>în <em>Cluj-Napoca</em></h1>
-  <p>Pozițiile sunt actualizate în timp real din sistemul nostru de recrutare.</p>
+  <p>Pozițiile sunt gestionate direct din panoul de administrare Netlify CMS.</p>
 </div>
 
-<!-- CAREERS SECTION — powered by Traffit -->
 <section class="careers-section">
-
-  <!-- Traffit filters widget -->
-  <div id="traffit-an-filters-xtxrxaxfxixtx2x0x1x6x"></div>
-
-  <!-- Traffit jobs list widget -->
-  <div id="traffit-an-list-xtxrxaxfxixtx2x0x1x6x">
-    <!-- Loading state shown until Traffit script renders the jobs -->
-    <div class="traffit-loading">
-      <div class="spinner"></div>
-      Se încarcă pozițiile...
+  <div class="careers-controls">
+    <div class="filter-group" id="filter-group">
+      <button class="filter-btn active" data-filter="all">Toate</button>
     </div>
+    <div class="jobs-count" id="jobs-count">Se încarcă...</div>
   </div>
-
-  <!-- Traffit script — loads and renders all job listings automatically -->
-  <script type="application/javascript" src="https://corerecruit.traffit.com/public/an/generateJs/"></script>
-
+  <div id="jobs-container">
+    <div class="content-loading"><div class="spinner"></div> Se încarcă pozițiile...</div>
+  </div>
 </section>
 
-<!-- SPONTANEOUS APPLICATION -->
 <section class="spontaneous">
   <div class="spontaneous-inner">
     <div>
       <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Candidatură spontană</span></div>
       <h3>Nu ai găsit <strong>ce cauți?</strong></h3>
       <p>Trimite-ne CV-ul tău și te contactăm atunci când apare o oportunitate potrivită.</p>
-      <p style="font-size:0.8rem;">
-        <a data-contact="email" href="mailto:office@core-recruit.ro" style="color:var(--blue);">office@core-recruit.ro</a>
-        · <span data-contact="phone">0264 702 345</span>
-      </p>
+      <p style="font-size:0.8rem;"><a data-contact="email" href="mailto:office@core-recruit.ro" style="color:var(--blue);">office@core-recruit.ro</a> · <span data-contact="phone">0264 702 345</span></p>
     </div>
     <div>
       <form class="spont-form" id="spont-form">
@@ -250,47 +109,107 @@
 </section>
 
 <footer>
-  <div class="footer-brand">
-    <a href="index.html" class="footer-logo-img"><img src="images/core-recruit-logo.png" alt="Core Recruit" class="footer-logo-img-el"></a>
-    <p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p>
-  </div>
-  <div class="footer-col">
-    <h4>Navigare</h4>
-    <ul>
-      <li><a href="index.html">Acasă</a></li>
-      <li><a href="about.html">Despre noi</a></li>
-      <li><a href="services.html">Servicii</a></li>
-      <li><a href="careers.html">Cariere</a></li>
-      <li><a href="partners.html">Parteneri</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h4>Contact</h4>
-    <p>
-      <a data-contact="email" href="mailto:office@core-recruit.ro" style="color:inherit;">office@core-recruit.ro</a><br>
-      <span data-contact="phone">0264 702 345</span><br>
-      <span data-contact="address">Piața Mihai Viteazu 38</span>
-    </p>
-  </div>
+  <div class="footer-brand"><a href="index.html" class="footer-logo">Core<span>.</span>Recruit</a><p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p></div>
+  <div class="footer-col"><h4>Navigare</h4><ul><li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li><li><a href="services.html">Servicii</a></li><li><a href="careers.html">Cariere</a></li><li><a href="partners.html">Parteneri</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="footer-col"><h4>Contact</h4><p><a data-contact="email" href="mailto:office@core-recruit.ro" style="color:inherit;">office@core-recruit.ro</a><br><span data-contact="phone">0264 702 345</span><br><span data-contact="address">Piața Mihai Viteazu 38</span></p></div>
 </footer>
 <div class="footer-bottom">
   <span class="footer-copy">©2024 Core Recruit.</span>
-  <div class="footer-social">
-    <a data-contact="facebook" href="#" target="_blank">Facebook</a>
-    <a data-contact="linkedin" href="#" target="_blank">LinkedIn</a>
-  </div>
+  <div class="footer-social"><a data-contact="facebook" href="#" target="_blank">Facebook</a><a data-contact="linkedin" href="#" target="_blank">LinkedIn</a></div>
 </div>
 
 <script src="js/main.js"></script>
 <script>
-  document.getElementById('spont-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('spont-success').style.display = 'block';
-    this.reset();
-    setTimeout(() => document.getElementById('spont-success').style.display = 'none', 5000);
-  });
-</script>
+// ============================================================
+// JOB SLUGS — Add each new job slug here when you add one in CMS
+// This list mirrors the filenames in /content/jobs/
+// When you publish a job in Netlify CMS, add its slug here.
+// ============================================================
+const JOB_SLUGS = [
+  'marketing-lead',
+  'senior-developer',
+  // Add more slugs here as you publish jobs in CMS
+];
 
+// Demo fallback data (shown if CMS files not yet deployed)
+const DEMO_JOBS = [
+  { title:'Marketing Lead', company:'Startup Cluj', location:'Cluj-Napoca', type:'Full-time', category:'Marketing', status:'urgent', applyLink:'mailto:office@core-recruit.ro', description:'Căutăm un Marketing Lead cu experiență B2B și marketing digital.' },
+  { title:'Senior Developer', company:'Tech Company', location:'Cluj-Napoca', type:'Hybrid', category:'IT', status:'open', applyLink:'mailto:office@core-recruit.ro', description:'Senior Developer React/Node.js pentru produs SaaS în creștere.' },
+  { title:'HR Manager', company:'Manufacturing Co', location:'Cluj-Napoca', type:'On-site', category:'HR', status:'open', applyLink:'mailto:office@core-recruit.ro', description:'HR Manager cu experiență în medii de producție, minim 5 ani.' },
+];
+
+let allJobs = [];
+let activeFilter = 'all';
+
+function renderJobs(jobs) {
+  const c = document.getElementById('jobs-container');
+  const count = document.getElementById('jobs-count');
+  const visible = jobs.filter(j => j.status !== 'closed');
+  count.innerHTML = `<span>${visible.length}</span> poziți${visible.length === 1 ? 'e' : 'i'} disponibile`;
+  if (!visible.length) {
+    c.innerHTML = `<div class="jobs-empty"><div class="jobs-empty-title">Nicio poziție disponibilă momentan</div></div>`;
+    return;
+  }
+  c.innerHTML = visible.map(job => `
+    <div class="job-card fade-in">
+      <div>
+        <div class="job-card-tag">${job.category || 'Oportunitate'}</div>
+        <div class="job-card-title">${job.title}</div>
+        <div class="job-card-meta">
+          <span>${job.company || ''}</span>
+          <span>${job.location || 'Cluj-Napoca'}</span>
+          <span>${job.type || ''}</span>
+        </div>
+        ${job.description ? `<div class="job-card-desc">${job.description}</div>` : ''}
+      </div>
+      <div class="job-card-right">
+        <span class="job-badge-status ${job.status === 'urgent' ? 'status-urgent' : 'status-open'}">${job.status === 'urgent' ? 'Urgent' : 'Deschis'}</span>
+        <a href="${job.applyLink || job.applylink || 'mailto:office@core-recruit.ro'}" class="apply-link">Aplică →</a>
+      </div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.job-card.fade-in').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 50);
+  });
+}
+
+function buildFilters(jobs) {
+  const cats = [...new Set(jobs.map(j => j.category).filter(Boolean))];
+  const fg = document.getElementById('filter-group');
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn'; btn.dataset.filter = cat; btn.textContent = cat;
+    fg.appendChild(btn);
+  });
+  fg.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.filter;
+      fg.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderJobs(activeFilter === 'all' ? allJobs : allJobs.filter(j => j.category === activeFilter));
+    });
+  });
+}
+
+async function loadJobs() {
+  const results = await window.CMS.loadCollection('jobs', JOB_SLUGS);
+  if (results.length > 0) {
+    allJobs = results;
+  } else {
+    allJobs = DEMO_JOBS;
+  }
+  buildFilters(allJobs);
+  renderJobs(allJobs);
+}
+
+document.addEventListener('DOMContentLoaded', loadJobs);
+
+document.getElementById('spont-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('spont-success').style.display = 'block';
+  this.reset();
+  setTimeout(() => document.getElementById('spont-success').style.display = 'none', 5000);
+});
+</script>
 </body>
 </html>
