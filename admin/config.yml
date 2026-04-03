@@ -4,7 +4,7 @@
 # ============================================================
 
 backend:
-  name: github
+  name: git-gateway
   repo: vlmihai/core-recruit  # ← Replace with your GitHub repo
   branch: main
 
