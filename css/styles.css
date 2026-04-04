@@ -1,0 +1,108 @@
+/* Core Recruit — Shared Styles v2 with Netlify CMS */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#eef3fa;--bg2:#e4edf8;--bg3:#d8e6f5;--white:#ffffff;
+  --blue:#1a3d9e;--blue-mid:#2a52c0;--blue-light:#4a72d8;
+  --red:#c0251f;--text:#0d1f4a;--text-mid:#3a4e7a;--text-muted:#7a8fb0;
+  --border:rgba(26,61,158,0.1);--border-strong:rgba(26,61,158,0.2);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;position:sticky;top:0;z-index:100;background:rgba(238,243,250,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.4rem;letter-spacing:0.04em;color:var(--blue);text-decoration:none}
+.logo span{color:var(--red)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul li a{text-decoration:none;color:var(--text-muted);font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+nav ul li a:hover,nav ul li a.active{color:var(--blue)}
+.nav-cta{background:transparent;color:var(--blue);border:1px solid var(--blue-mid);padding:0.5rem 1.4rem;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.05em;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block}
+.nav-cta:hover{background:var(--blue);color:white}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:1.5px;background:var(--blue);display:block;transition:all 0.3s}
+.mobile-menu{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(238,243,250,0.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:1.5rem 2rem;gap:1.2rem;z-index:99}
+.mobile-menu a{text-decoration:none;color:var(--text-mid);font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase}
+.mobile-menu.open{display:flex}
+
+/* BUTTONS */
+.btn-primary{background:var(--blue);color:white;border:none;padding:0.85rem 2.2rem;font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--blue-mid);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text-mid);border:1px solid var(--border-strong);padding:0.85rem 2.2rem;font-family:'Inter',sans-serif;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-white{background:transparent;color:white;border:1px solid rgba(255,255,255,0.35);padding:0.8rem 2rem;font-family:'Inter',sans-serif;font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block}
+.btn-white:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)}
+
+/* TYPOGRAPHY */
+.section-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.eyebrow-line{width:24px;height:1px;background:var(--red);flex-shrink:0}
+.eyebrow-text{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--text);letter-spacing:-0.01em;line-height:1.1}
+.section-title strong{font-weight:600}
+.section-title.white{color:white}
+
+/* PAGE HERO */
+.page-hero{background:var(--blue);padding:5rem 4rem 4rem;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;right:-60px;bottom:-60px;width:320px;height:320px;border-radius:50%;border:60px solid rgba(192,37,31,0.12);pointer-events:none}
+.page-hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.page-hero-eyebrow .eyebrow-line{background:rgba(255,255,255,0.4)}
+.page-hero-eyebrow .eyebrow-text{color:rgba(255,255,255,0.5)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,5vw,4.5rem);color:white;line-height:1.1;letter-spacing:-0.02em;max-width:700px}
+.page-hero h1 strong{font-weight:600}
+.page-hero h1 em{font-style:italic;color:rgba(255,255,255,0.6)}
+.page-hero p{color:rgba(255,255,255,0.6);font-size:1rem;line-height:1.8;max-width:520px;margin-top:1.2rem}
+
+/* FOOTER */
+footer{background:var(--text);padding:3rem 4rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;align-items:start}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;letter-spacing:0.04em;color:white;display:block;margin-bottom:0.8rem;text-decoration:none}
+.footer-logo span{color:var(--red)}
+.footer-tagline{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.6;max-width:220px}
+.footer-col h4{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-col ul li a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
+.footer-col ul li a:hover{color:white}
+.footer-col p{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7}
+.footer-bottom{background:var(--text);border-top:1px solid rgba(255,255,255,0.07);padding:1.2rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25)}
+.footer-social{display:flex;gap:1rem}
+.footer-social a{font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.footer-social a:hover{color:white}
+
+/* DIVIDER */
+.divider-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.1rem 4rem;display:flex;justify-content:space-between;align-items:center;overflow:hidden}
+.ds-item{display:flex;align-items:center;gap:0.75rem;flex-shrink:0}
+.ds-line{width:1px;height:16px;background:var(--border-strong);flex-shrink:0}
+.ds-text{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+
+/* LOADING */
+.content-loading{display:flex;align-items:center;justify-content:center;padding:4rem;color:var(--text-muted);font-size:0.875rem;gap:1rem}
+.spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:960px){
+  nav ul,.nav-cta{display:none}
+  .hamburger{display:flex}
+  nav{padding:1rem 1.5rem}
+  .page-hero{padding:3.5rem 1.5rem 3rem}
+  footer{grid-template-columns:1fr;gap:2rem;padding:2.5rem 1.5rem}
+  .footer-bottom{padding:1rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
+  .divider-strip{padding:1rem 1.5rem;gap:0.8rem;flex-wrap:wrap}
+  .ds-line{display:none}
+}
+
+/* ---- LOGO IMAGE ---- */
+.logo-img-link { display:flex; align-items:center; text-decoration:none; }
+.nav-logo { height:48px; width:auto; display:block; }
+.footer-logo-img { display:block; margin-bottom:0.8rem; text-decoration:none; }
+.footer-logo-img-el { height:44px; width:auto; filter:brightness(0) invert(1); }
+nav { gap:1rem; }
+
+/* ---- LOGO (image + text fallback) ---- */
+.logo { display:flex; align-items:center; text-decoration:none; font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.4rem; letter-spacing:0.04em; color:var(--blue); }
+.logo .logo-text { color:var(--blue); }
+.logo .logo-text span { color:var(--red); }
+.footer-logo { display:flex; align-items:center; text-decoration:none; font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.3rem; color:white; margin-bottom:0.8rem; }
+.footer-logo .footer-logo-text span { color:var(--red); }
+nav { gap:1rem; }

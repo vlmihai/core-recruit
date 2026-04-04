@@ -1,0 +1,120 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+
+  - name: "jobs"
+    label: "Pozitii deschise"
+    label_singular: "Pozitie"
+    folder: "content/jobs"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{company}} ({{status}})"
+    fields:
+      - { label: "Titlu pozitie", name: "title", widget: "string" }
+      - { label: "Companie", name: "company", widget: "string" }
+      - { label: "Locatie", name: "location", widget: "string", default: "Cluj-Napoca" }
+      - label: "Tip angajare"
+        name: "type"
+        widget: "select"
+        options: ["Full-time", "Part-time", "Hybrid", "Remote", "On-site"]
+      - label: "Categorie"
+        name: "category"
+        widget: "select"
+        options: ["IT", "Marketing", "HR", "Financiar", "Vanzari", "Management", "Productie", "Altele"]
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Deschis", value: "open" }
+          - { label: "Urgent", value: "urgent" }
+          - { label: "Inchis", value: "closed" }
+        default: "open"
+      - { label: "Link aplicare", name: "applyLink", widget: "string" }
+      - { label: "Descriere scurta", name: "description", widget: "text" }
+      - { label: "Data publicarii", name: "date", widget: "datetime" }
+
+  - name: "team"
+    label: "Echipa"
+    label_singular: "Membru echipa"
+    folder: "content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nume", name: "name", widget: "string" }
+      - { label: "Rol", name: "role", widget: "string" }
+      - { label: "Biografie", name: "bio", widget: "text" }
+      - { label: "Fotografie", name: "photo", widget: "image", required: false }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+      - { label: "Ordine afisare", name: "order", widget: "number", default: 1 }
+
+  - name: "testimonials"
+    label: "Testimoniale"
+    label_singular: "Testimonial"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}} — {{company}}"
+    fields:
+      - { label: "Citat", name: "quote", widget: "text" }
+      - { label: "Nume", name: "name", widget: "string" }
+      - { label: "Rol", name: "role", widget: "string" }
+      - { label: "Companie", name: "company", widget: "string" }
+      - { label: "Initiale avatar", name: "initial", widget: "string" }
+      - { label: "Logo companie", name: "logo", widget: "image", required: false }
+      - { label: "Ordine afisare", name: "order", widget: "number", default: 1 }
+
+  - name: "partners"
+    label: "Parteneri"
+    label_singular: "Partener"
+    folder: "content/partners"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    fields:
+      - { label: "Nume companie", name: "name", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Ordine afisare", name: "order", widget: "number", default: 1 }
+
+  - name: "settings"
+    label: "Setari site"
+    files:
+
+      - label: "Logo & Identitate"
+        name: "site"
+        file: "content/settings/site.json"
+        fields:
+          - { label: "Logo site", name: "logo", widget: "image", required: false, hint: "PNG transparent recomandat" }
+          - { label: "Nume site", name: "site_name", widget: "string", default: "Core Recruit" }
+
+      - label: "Informatii contact"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telefon", name: "phone", widget: "string" }
+          - { label: "Adresa", name: "address", widget: "string" }
+          - { label: "Oras", name: "city", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Google Maps URL", name: "maps", widget: "string" }
+
+      - label: "Setari pagina principala"
+        name: "homepage"
+        file: "content/settings/homepage.json"
+        fields:
+          - { label: "Titlu Hero rand 1", name: "hero_line1", widget: "string" }
+          - { label: "Titlu Hero rand 2 bold", name: "hero_line2", widget: "string" }
+          - { label: "Titlu Hero rand 3 italic", name: "hero_line3", widget: "string" }
+          - { label: "Descriere Hero", name: "hero_desc", widget: "text" }
+          - { label: "Ani experienta", name: "stat_years", widget: "string", default: "10+" }
+          - { label: "Plasari reusite", name: "stat_placements", widget: "string", default: "200+" }
+          - { label: "Parteneri", name: "stat_partners", widget: "string", default: "50+" }

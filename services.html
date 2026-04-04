@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicii — Core Recruit</title>
+<meta name="description" content="Recrutare, team-building și training soft skills — soluții HR integrate din Cluj-Napoca.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .services-main { padding: 6rem 4rem; background: var(--white); }
+  .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  .service-block:first-child { padding-top: 0; }
+  .service-block:last-child { border-bottom: none; }
+  .service-block.reverse { direction: rtl; }
+  .service-block.reverse > * { direction: ltr; }
+  .sb-visual { background: var(--bg2); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .sb-visual-num { font-family:'Cormorant Garamond',serif; font-size:8rem; font-weight:300; color:rgba(26,61,158,0.08); position:absolute; bottom:-1rem; right:1rem; line-height:1; }
+  .sb-visual-icon { position:relative;z-index:1; }
+  .sb-content {}
+  .sb-num { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--red); font-weight:300; letter-spacing:0.1em; margin-bottom:0.8rem; }
+  .sb-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; color:var(--text); margin-bottom:1.2rem; line-height:1.1; }
+  .sb-desc { font-size:0.9rem; color:var(--text-muted); line-height:1.9; font-weight:300; margin-bottom:2rem; }
+  .process-list { display:flex; flex-direction:column; gap:0; }
+  .process-item { display:flex; gap:1rem; align-items:flex-start; padding:0.9rem 0; border-bottom:1px solid var(--border); }
+  .process-item:first-child { border-top:1px solid var(--border); }
+  .process-dot { width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0; }
+  .process-text { font-size:0.875rem;color:var(--text-mid);line-height:1.6; }
+
+  .cta-banner { background:var(--blue); padding:5rem 4rem; display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:center; }
+  .cta-banner .section-title.white { margin-bottom:0.8rem; }
+  .cta-banner p { color:rgba(255,255,255,0.55);font-size:0.9rem;font-weight:300; }
+
+  @media (max-width:960px) {
+    .services-main { padding:4rem 1.5rem; }
+    .service-block { grid-template-columns:1fr; gap:2.5rem; direction:ltr; }
+    .service-block.reverse { direction:ltr; }
+    .cta-banner { grid-template-columns:1fr; padding:3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo" id="nav-logo-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" id="nav-logo-img" style="height:44px;width:auto;display:block;"><span class="logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span></a>
+  <ul>
+    <li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li>
+    <li><a href="services.html" class="active">Servicii</a></li><li><a href="careers.html">Cariere</a></li>
+    <li><a href="partners.html">Parteneri</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contactează-ne</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Acasă</a><a href="about.html">Despre noi</a><a href="services.html">Servicii</a>
+  <a href="careers.html">Cariere</a><a href="partners.html">Parteneri</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Ce oferim</span></div>
+  <h1>Servicii HR<br><strong>integrate</strong> pentru<br><em>echipa ta</em></h1>
+  <p>Recrutare, team-building și training — soluții complete adaptate nevoilor organizației tale.</p>
+</div>
+
+<section class="services-main">
+  <div class="service-block" id="recrutare">
+    <div class="sb-visual fade-in">
+      <div class="sb-visual-num">01</div>
+      <div class="sb-visual-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" stroke="#1a3d9e" stroke-width="2"/>
+          <path d="M12 72c0-15.5 12.5-28 28-28s28 12.5 28 28" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
+          <path d="M58 38l8 8-8 8M66 46H52" stroke="#c0251f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sb-content fade-in">
+      <div class="sb-num">Serviciul 01</div>
+      <div class="sb-title">Recrutare</div>
+      <p class="sb-desc">Identificăm și atragem talentele potrivite pentru afacerea ta — candidați calificați, cu potrivire culturală, printr-un proces riguros și personalizat.</p>
+      <div class="process-list">
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Realizarea profilului împreună cu angajatorul</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Căutarea și selecția candidaților</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Interviuri preliminare</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Evaluarea aptitudinilor și testarea candidaților</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Verificarea referințelor</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Recomandarea unui short-list</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Programarea interviurilor finale</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Follow-up periodic</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-block reverse" id="teambuilding">
+    <div class="sb-visual fade-in">
+      <div class="sb-visual-num">02</div>
+      <div class="sb-visual-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="8" y="16" width="64" height="48" rx="4" stroke="#1a3d9e" stroke-width="2"/>
+          <circle cx="28" cy="34" r="8" stroke="#c0251f" stroke-width="2"/>
+          <circle cx="52" cy="34" r="8" stroke="#c0251f" stroke-width="2"/>
+          <path d="M14 60c1.5-7 7-12 14-12s12.5 5 14 12" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
+          <path d="M38 60c1.5-7 7-12 14-12s12.5 5 14 12" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sb-content fade-in">
+      <div class="sb-num">Serviciul 02</div>
+      <div class="sb-title">Team-building</div>
+      <p class="sb-desc">Programe personalizate de team-building — de la stabilirea obiectivelor și evaluarea companiei, până la livrare, coaching și raport de consultanță.</p>
+      <div class="process-list">
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Stabilirea obiectivelor împreună cu clientul</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Evaluarea situației companiei</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Prezentăm propuneri personalizate</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Construim programul de team-building</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Livrăm programul</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Ședințe de coaching</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Raport de consultanță</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Evaluarea fiecărui participant</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-block" id="training">
+    <div class="sb-visual fade-in">
+      <div class="sb-visual-num">03</div>
+      <div class="sb-visual-icon">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <path d="M12 68V24l28-12 28 12v44" stroke="#1a3d9e" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="34" y="50" width="12" height="18" stroke="#c0251f" stroke-width="2"/>
+          <path d="M22 36h10M48 36h10M22 48h10M48 48h10" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sb-content fade-in">
+      <div class="sb-num">Serviciul 03</div>
+      <div class="sb-title">Training Soft Skills</div>
+      <p class="sb-desc">Dezvoltați-vă angajații prin programe de formare axate pe competențe esențiale — comunicare eficientă, leadership, time management și adaptabilitate.</p>
+      <div class="process-list">
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Team management</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Comunicare eficientă</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Time management</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Coordonare echipe</span></div>
+        <div class="process-item"><div class="process-dot"></div><span class="process-text">Coaching individual și de grup</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <div>
+    <div class="section-eyebrow" style="margin-bottom:1rem;"><div class="eyebrow-line" style="background:rgba(255,255,255,0.3);"></div><span class="eyebrow-text" style="color:rgba(255,255,255,0.4);">Hai să colaborăm</span></div>
+    <div class="section-title white">Găsim soluția <strong>potrivită pentru tine</strong></div>
+    <p>Contactează-ne pentru o consultație gratuită și descoperă cum te putem ajuta.</p>
+  </div>
+  <a href="contact.html" class="btn-white">Contactează-ne →</a>
+</div>
+
+<footer>
+  <div class="footer-brand"><a href="index.html" class="footer-logo" id="footer-logo-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" id="footer-logo-img" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);"><span class="footer-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span></a><p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p></div>
+  <div class="footer-col"><h4>Navigare</h4><ul><li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li><li><a href="services.html">Servicii</a></li><li><a href="careers.html">Cariere</a></li><li><a href="partners.html">Parteneri</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="footer-col"><h4>Contact</h4><p>Piața Mihai Viteazu 38, Ap.1<br>Cluj-Napoca, România<br><br>office@core-recruit.ro<br>0264 702 345</p></div>
+</footer>
+<div class="footer-bottom">
+  <span class="footer-copy">©2024 Core Recruit. Toate drepturile rezervate.</span>
+  <div class="footer-social"><a href="https://www.facebook.com/corerecruit.ro/" target="_blank">Facebook</a><a href="https://www.linkedin.com/company/core-recruit/" target="_blank">LinkedIn</a></div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
