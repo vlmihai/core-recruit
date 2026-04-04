@@ -39,7 +39,7 @@
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo" id="nav-logo-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" id="nav-logo-img" style="height:44px;width:auto;display:block;"><span class="logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span></a>
+  <a href="index.html" class="logo">Core<span>.</span>Recruit</a>
   <ul>
     <li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li>
     <li><a href="services.html">Servicii</a></li><li><a href="careers.html">Cariere</a></li>
@@ -62,17 +62,13 @@
 <section class="partners-logos">
   <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Parteneri actuali</span></div>
   <div class="section-title">Companiile care ne <strong>au ales</strong></div>
-  <div class="logos-grid" id="partners-grid">
-    <div style="padding:2rem;color:var(--text-muted);font-size:0.82rem;grid-column:1/-1;text-align:center;">Se încarcă partenerii...</div>
-  </div>
+  <div class="logos-grid" id="partners-grid"></div>
 </section>
 
 <section class="testimonials-full">
   <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Ce spun partenerii noștri</span></div>
   <div class="section-title">Testimoniale <strong>reale</strong></div>
-  <div class="tgrid" id="testimonials-grid">
-    <div style="padding:3rem;text-align:center;color:var(--text-muted);font-size:0.875rem;">Se încarcă testimonialele...</div>
-  </div>
+  <div class="tgrid" id="testimonials-grid"></div>
 </section>
 
 <div class="cta-strip">
@@ -85,9 +81,9 @@
 </div>
 
 <footer>
-  <div class="footer-brand"><a href="index.html" class="footer-logo" id="footer-logo-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" id="footer-logo-img" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);"><span class="footer-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span></a><p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p></div>
+  <div class="footer-brand"><a href="index.html" class="footer-logo">Core<span>.</span>Recruit</a><p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p></div>
   <div class="footer-col"><h4>Navigare</h4><ul><li><a href="index.html">Acasă</a></li><li><a href="about.html">Despre noi</a></li><li><a href="services.html">Servicii</a></li><li><a href="careers.html">Cariere</a></li><li><a href="partners.html">Parteneri</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-  <div class="footer-col"><h4>Contact</h4><p>Piața Mihai Viteazu 38, Ap.1<br>Cluj-Napoca, România<br><br>office@core-recruit.ro<br>0264 702 345</p></div>
+  <div class="footer-col"><h4>Contact</h4><p>Piața Mihai Viteazu 38, Ap.1<br>Cluj-Napoca, România<br><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f79891919e9492b794988592da85929485829e83d98598">[email&#160;protected]</a><br>0264 702 345</p></div>
 </footer>
 <div class="footer-bottom">
   <span class="footer-copy">©2024 Core Recruit. Toate drepturile rezervate.</span>
@@ -95,26 +91,35 @@
 </div>
 <script src="js/main.js"></script>
 <script>
-// Slugs for testimonials — mirrors /content/testimonials/ filenames
 const TESTIMONIAL_SLUGS = [
   'daniel-bejan','sorin-bob','george-toman','octavia-tiriac',
   'florin-dradiciu','ciprian-deak','daniel-avram','sergiu-cobirzan',
   'carmen-calin','andrei-hasna','pushkar-chatterji'
 ];
-
-// Slugs for partners — mirrors /content/partners/ filenames
 const PARTNER_SLUGS = [
   'findox','boatyardx','c4n','mindera','dual','chestnut',
   'tecknoworks','mega-image','inflectionpoint','contabrio',
   'terragres','hasna','nola','ag-vector','red-to-blue'
 ];
+const FALLBACK_T = [
+  {quote:'Parteneriatul cu Core Recruit a stat la baza succesului nostru pe plan local. Am reuşit să construim o echipă extraordinară cu profesionişti identificați exclusiv de Core Recruit.',name:'Daniel Bejan',role:'Head of Romania Office',company:'FinDox',initial:'FD'},
+  {quote:'Încă de la început BoatyardX a ales să colaboreze cu Core Recruit. Nu au dezamăgit niciodată. Folosesc un proces riguros în recrutare.',name:'Sorin Bob',role:'General Manager',company:'BoatyardX',initial:'BX'},
+  {quote:'Since we have started the collaboration with Core-recruit we have noticed the promptitude and willingness to understand our needs in every single detail.',name:'George Toman',role:'CEO',company:'C4N',initial:'C4'},
+  {quote:'Core-Recruit is the team that listens, asks thoughtful questions and seeks to understand any particular need. Our collaboration is based on trust.',name:'Octavia Tiriac',role:'Recruitment Specialist',company:'Mindera',initial:'MN'},
+  {quote:'Totul a început cu încrederea că echipa CoreRecruit ne va livra developeri de foarte bună calitate. Prin profesionalism şi transparență au reuşit să gestioneze inclusiv situațiile delicate.',name:'Florin Dradiciu',role:'CEO',company:'DUAL',initial:'DL'},
+  {quote:'Colaborarea cu echipa Core Recruit este una bazată pe flexibilitate şi rapiditate. Înțeleg repede cerințele noastre şi au prezentat candidați foarte buni.',name:'Ciprian Deak',role:'HR Manager',company:'Red to Blue',initial:'RB'},
+  {quote:'Mulțumim echipei Core Recruit, care a fost lângă noi din primul minut. OMUL este o resursă, nu un cost! Core Recruit — simply the BEST!',name:'Daniel Avram',role:'Founder',company:'AG Vector',initial:'AG'},
+  {quote:'Colaboram cu drag cu Core Recruit: ne-au înțeles repede nevoile şi ne-au propus cu promptitudine candidați potriviti profilului dorit.',name:'Sergiu Cobirzan',role:'Administrator',company:'Contabrio',initial:'CB'},
+  {quote:'Colaborarea cu Core Recruit a fost una de succes. Am apreciat profesionalismul, implicarea deosebită şi creativitatea.',name:'Carmen Calin',role:'Talent Acquisition & Employer Branding Manager',company:'Mega Image',initial:'MI'},
+  {quote:'Am apreciat comunicarea excelentă şi anticiparea nevoilor organizației noastre. Au devenit pentru noi un partener de încredere.',name:'Andrei Hasna',role:'CEO',company:'Hasna',initial:'HS'},
+  {quote:'InflectionPoint has been pleasantly surprised at the speed and promptness with which Core-Recruit has been able to deliver quality candidates.',name:'Pushkar Chatterji',role:'CEO',company:'InflectionPoint',initial:'IP'},
+];
+const FALLBACK_P = ['FinDox','BoatyardX','C4N','Mindera','DUAL','Chestnut','Tecknoworks','Mega Image','InflectionPoint','Contabrio','Terragres','Hasna','Nola','AG Vector','Red to Blue','Birou 01'].map(n=>({name:n,logo:'',website:''}));
 
-async function loadTestimonials() {
-  const grid = document.getElementById('testimonials-grid');
-  if (!grid) return;
-  const items = await window.CMS.loadCollection('testimonials', TESTIMONIAL_SLUGS);
-  const data = items.length ? items.sort((a,b) => (parseInt(a.order)||0)-(parseInt(b.order)||0)) : getFallbackTestimonials();
-  grid.innerHTML = data.map(t => `
+function renderTestimonials(data) {
+  const g = document.getElementById('testimonials-grid');
+  if (!g) return;
+  g.innerHTML = data.map(t=>`
     <div class="tcard-full">
       <div>
         <p class="tcard-quote">${t.quote}</p>
@@ -125,45 +130,32 @@ async function loadTestimonials() {
         </div>
       </div>
       <div class="tcard-right">
-        ${t.logo ? `<img src="${t.logo}" alt="${t.company}" style="max-width:100px;max-height:50px;object-fit:contain;filter:grayscale(1);opacity:0.6;">` 
-                 : `<div class="company-initial">${t.initial||t.company.substring(0,2).toUpperCase()}</div>`}
+        ${t.logo?`<img src="${t.logo}" alt="${t.company}" style="max-width:100px;max-height:50px;object-fit:contain;filter:grayscale(1);opacity:0.6;">`:`<div class="company-initial">${(t.initial||t.company.substring(0,2)).toUpperCase()}</div>`}
       </div>
     </div>`).join('');
 }
 
-async function loadPartners() {
-  const grid = document.getElementById('partners-grid');
-  if (!grid) return;
-  const items = await window.CMS.loadCollection('partners', PARTNER_SLUGS);
-  const data = items.length ? items.sort((a,b) => (parseInt(a.order)||0)-(parseInt(b.order)||0)) : getFallbackPartners();
-  grid.innerHTML = data.map(p => `
+function renderPartners(data) {
+  const g = document.getElementById('partners-grid');
+  if (!g) return;
+  g.innerHTML = data.map(p=>`
     <div class="logo-cell">
-      ${p.logo 
-        ? `<img src="${p.logo}" alt="${p.name}" style="max-height:50px;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:0.65;">`
-        : `<span>${p.name}</span>`}
+      ${p.logo?`<img src="${p.logo}" alt="${p.name}" style="max-height:50px;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:0.65;">`:`<span>${p.name}</span>`}
     </div>`).join('');
 }
 
-function getFallbackTestimonials() {
-  return [
-    {quote:'Parteneriatul cu Core Recruit a stat la baza succesului nostru pe plan local. Am reușit să construim o echipă extraordinară cu profesioniști identificați exclusiv de Core Recruit.',name:'Daniel Bejan',role:'Head of Romania Office',company:'FinDox',initial:'FD'},
-    {quote:'Nu au dezamăgit niciodată. Ne-au demonstrat că folosesc un proces riguros în recrutare și au reușit să ne prezinte un pool interesant de candidați.',name:'Sorin Bob',role:'General Manager',company:'BoatyardX',initial:'BX'},
-    {quote:'Core-Recruit is the team that listens, asks thoughtful questions and seeks to understand any particular need. Our collaboration is based on trust.',name:'Octavia Tiriac',role:'Recruitment Specialist',company:'Mindera',initial:'MN'},
-    {quote:'Totul a început cu încrederea că echipa CoreRecruit ne va livra developeri de foarte bună calitate, potriviți pentru proiectele și clienții noștri.',name:'Florin Dradiciu',role:'CEO',company:'DUAL',initial:'DL'},
-    {quote:'Colaborarea cu echipa Core Recruit este una bazată pe flexibilitate și rapiditate în livrarea profilelor. Înțeleg repede cerințele noastre.',name:'Ciprian Deak',role:'HR Manager',company:'Red to Blue',initial:'RB'},
-    {quote:'Mulțumim echipei Core Recruit, care a fost lângă noi din primul minut al proiectului nostru de start-up. Core Recruit — simply the BEST!',name:'Daniel Avram',role:'Founder',company:'AG Vector',initial:'AG'},
-  ];
+async function loadAll() {
+  if (window.CMS) {
+    const t = await window.CMS.loadCollection('testimonials', TESTIMONIAL_SLUGS);
+    renderTestimonials(t.length ? t.sort((a,b)=>(+a.order||0)-(+b.order||0)) : FALLBACK_T);
+    const p = await window.CMS.loadCollection('partners', PARTNER_SLUGS);
+    renderPartners(p.length ? p.sort((a,b)=>(+a.order||0)-(+b.order||0)) : FALLBACK_P);
+  } else {
+    renderTestimonials(FALLBACK_T);
+    renderPartners(FALLBACK_P);
+  }
 }
-
-function getFallbackPartners() {
-  return ['FinDox','BoatyardX','C4N','Mindera','DUAL','Chestnut','Tecknoworks','Mega Image','InflectionPoint','Contabrio','Terragres','Hasna','Nola','AG Vector','Red to Blue']
-    .map(name => ({name, logo:''}));
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  loadTestimonials();
-  loadPartners();
-});
+document.addEventListener('DOMContentLoaded', loadAll);
 </script>
 </body>
 </html>

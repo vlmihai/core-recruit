@@ -116,7 +116,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo" id="nav-logo-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" id="nav-logo-img" style="height:44px;width:auto;display:block;"><span class="logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span></a>
+  <a href="index.html" class="logo">Core<span>.</span>Recruit</a>
   <ul>
     <li><a href="index.html" class="active">Acasă</a></li>
     <li><a href="about.html">Despre noi</a></li>
@@ -168,9 +168,7 @@
         <span class="visual-header-title">Oportunități active</span>
         <span class="visual-header-tag">Cluj-Napoca</span>
       </div>
-      <div class="visual-body" id="hero-jobs">
-        <div style="padding:2rem;text-align:center;color:var(--text-muted);font-size:0.82rem;">Se încarcă pozițiile...</div>
-      </div>
+      <div class="visual-body" id="hero-jobs"><div style="padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.82rem;">Se încarcă pozițiile...</div></div>
       <div class="visual-footer">
         <span class="vf-text">Vezi toate pozițiile</span>
         <a href="careers.html" class="vf-btn">Cariere →</a>
@@ -274,7 +272,7 @@
 
 <footer>
   <div class="footer-brand">
-    <a href="index.html" class="footer-logo" id="footer-logo-link"><img src="images/core-recruit-logo.png" alt="Core Recruit" id="footer-logo-img" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);"><span class="footer-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span></a>
+    <a href="index.html" class="footer-logo">Core<span>.</span>Recruit</a>
     <p class="footer-tagline">HR Enthusiasts din Cluj-Napoca. Parteneri de încredere pentru recrutare și dezvoltare organizațională.</p>
   </div>
   <div class="footer-col">
@@ -298,57 +296,56 @@
   <div class="footer-social">
     <a href="https://www.facebook.com/corerecruit.ro/" target="_blank">Facebook</a>
     <a href="https://www.linkedin.com/company/core-recruit/" target="_blank">LinkedIn</a>
-    <a href="https://maps.google.com/?c
+    <a href="https://maps.google.com/?cid=15807430511712854046" target="_blank">Google Maps</a>
+  </div>
+</div>
+
 <script src="js/main.js"></script>
 <script>
-// Load logo from CMS settings
-async function loadLogo() {
-  try {
-    const res = await fetch('/content/settings/site.json');
-    const data = await res.json();
-    if (data.logo) {
-      document.querySelectorAll('.nav-logo, .footer-logo-img-el').forEach(el => {
-        el.src = data.logo;
-        el.style.display = 'block';
-      });
-      document.querySelectorAll('.logo-text').forEach(el => el.style.display = 'none');
-    }
-  } catch(e) {}
-}
-
-// Load latest jobs from Traffit API for hero widget
+// Load live jobs from Traffit into hero widget
 async function loadHeroJobs() {
   const container = document.getElementById('hero-jobs');
   if (!container) return;
   try {
-    const res = await fetch('https://corerecruit.traffit.com/public/an/getJobOffers/', {
-      method: 'GET', headers: { 'Accept': 'application/json' }
-    });
+    const res = await fetch('https://corerecruit.traffit.com/public/an/getJobOffers/');
     if (!res.ok) throw new Error();
     const data = await res.json();
-    const jobs = Array.isArray(data) ? data.slice(0, 4) : (data.offers || data.jobs || []).slice(0, 4);
-    if (!jobs.length) throw new Error('no jobs');
+    const jobs = (Array.isArray(data) ? data : (data.offers||data.jobs||[])).slice(0,4);
+    if (!jobs.length) throw new Error();
     container.innerHTML = jobs.map(j => `
       <div class="job-row">
         <div>
-          <div class="job-title">${j.name || j.title || 'Pozitie deschisa'}</div>
-          <div class="job-sub">${j.department || j.category || ''} · ${j.work_mode || j.type || 'Full-time'}</div>
+          <div class="job-title">${j.name||j.title||'Pozitie deschisa'}</div>
+          <div class="job-sub">${j.department||j.category||''} · ${j.work_mode||j.type||'Full-time'}</div>
         </div>
         <span class="job-badge badge-open">Deschis</span>
       </div>`).join('');
   } catch(e) {
-    // Fallback: show link to careers page
-    container.innerHTML = `
-      <div style="padding:1.5rem 0;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text);margin-bottom:0.5rem;">Pozitii disponibile</div>
-        <div style="font-size:0.82rem;color:var(--text-muted);">Vezi toate oportunitatile active pe pagina Cariere.</div>
-      </div>`;
+    container.innerHTML = `<div style="padding:1.5rem;text-align:center;">
+      <a href="careers.html" style="font-size:0.85rem;color:var(--blue);text-decoration:none;font-family:Inter,sans-serif;">
+        Vezi toate pozițiile deschise →
+      </a></div>`;
   }
 }
 
+// Load logo from CMS settings if uploaded
+async function loadLogo() {
+  try {
+    const res = await fetch('/content/settings/site.json');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.logo && data.logo.trim()) {
+      document.querySelectorAll('#nav-logo-img,#footer-logo-img').forEach(el => {
+        if (el) { el.src = data.logo; el.style.display = 'block'; }
+      });
+      document.querySelectorAll('.logo-text,.footer-logo-text').forEach(el => el.style.display = 'none');
+    }
+  } catch(e) {}
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  loadLogo();
   loadHeroJobs();
+  loadLogo();
 });
 </script>
 </body>
