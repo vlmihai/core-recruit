@@ -7,10 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-  .careers-section { padding: 5rem 4rem; background: var(--white); overflow: visible; }
+  /* Fix body overflow clipping Traffit button */
+  body { overflow-x: visible !important; }
+
+  .careers-section { padding: 5rem 4rem 5rem 4rem; background: var(--white); overflow: visible; box-sizing: border-box; }
 
   /* Traffit filter row — prevent button from being clipped */
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x { margin-bottom: 2rem; overflow: visible; }
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x { margin-bottom: 2rem; overflow: visible; box-sizing: border-box; width: 100%; }
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x > * { box-sizing: border-box !important; max-width: 100% !important; }
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x form { box-sizing: border-box !important; width: 100% !important; overflow: visible !important; }
   #traffit-an-list-xtxrxaxfxixtx2x0x1x6x { overflow: visible; }
 
   /* Traffit widget overrides */
