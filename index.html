@@ -116,7 +116,10 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><img src="images/core-recruit-logo.png" alt="Core Recruit" style="height:42px;width:auto;display:block;"></a>
+  <a href="index.html" class="logo" id="nav-logo-link">
+    <img src="/images/core-recruit-logo.png" alt="Core Recruit" id="nav-logo-img" style="height:44px;width:auto;display:block;">
+    <span id="nav-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span>
+  </a>
   <ul>
     <li><a href="index.html" class="active">Acasă</a></li>
     <li><a href="about.html">Despre noi</a></li>
@@ -272,7 +275,10 @@
 
 <footer>
   <div class="footer-brand">
-    <a href="index.html" class="footer-logo"><img src="images/core-recruit-logo.png" alt="Core Recruit" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1);"></a>
+    <a href="index.html" class="footer-logo" id="footer-logo-link">
+      <img src="/images/core-recruit-logo.png" alt="Core Recruit" id="footer-logo-img" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);">
+      <span id="footer-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span>
+    </a>
     <p class="footer-tagline">HR Enthusiasts din Cluj-Napoca. Parteneri de încredere pentru recrutare și dezvoltare organizațională.</p>
   </div>
   <div class="footer-col">
@@ -302,6 +308,7 @@
 
 <script src="js/main.js"></script>
 <script>
+// Load live jobs from Traffit into hero widget
 async function loadHeroJobs() {
   const container = document.getElementById('hero-jobs');
   if (!container) return;
@@ -321,12 +328,52 @@ async function loadHeroJobs() {
       </div>`).join('');
   } catch(e) {
     container.innerHTML = `<div style="padding:1.5rem;text-align:center;">
-      <a href="careers.html" style="font-size:0.85rem;color:var(--blue);text-decoration:none;">
+      <a href="careers.html" style="font-size:0.85rem;color:var(--blue);text-decoration:none;font-family:Inter,sans-serif;">
         Vezi toate pozițiile deschise →
       </a></div>`;
   }
 }
-document.addEventListener('DOMContentLoaded', loadHeroJobs);
+
+// Logo loader — hardcoded image shown by default
+// If CMS has a different logo in site.json, it swaps automatically
+async function loadLogo() {
+  try {
+    const res = await fetch('/content/settings/site.json');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.logo && data.logo.trim() && data.logo !== '/images/core-recruit-logo.png') {
+      // CMS has a custom logo — swap both nav and footer
+      const navImg = document.getElementById('nav-logo-img');
+      const footerImg = document.getElementById('footer-logo-img');
+      if (navImg) { navImg.src = data.logo; navImg.style.filter = ''; }
+      if (footerImg) { footerImg.src = data.logo; }
+    }
+    // If logo field is empty, show text fallback instead of broken image
+    if (!data.logo || !data.logo.trim()) {
+      document.getElementById('nav-logo-img').style.display = 'none';
+      document.getElementById('nav-logo-text').style.display = 'inline';
+      document.getElementById('footer-logo-img').style.display = 'none';
+      document.getElementById('footer-logo-text').style.display = 'inline';
+    }
+  } catch(e) {
+    // On any error, show text fallback
+    const navImg = document.getElementById('nav-logo-img');
+    if (navImg) navImg.onerror = function() {
+      this.style.display = 'none';
+      document.getElementById('nav-logo-text').style.display = 'inline';
+    };
+    const footerImg = document.getElementById('footer-logo-img');
+    if (footerImg) footerImg.onerror = function() {
+      this.style.display = 'none';
+      document.getElementById('footer-logo-text').style.display = 'inline';
+    };
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadHeroJobs();
+  loadLogo();
+});
 </script>
 </body>
 </html>
