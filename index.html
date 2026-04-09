@@ -116,7 +116,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Core<span>.</span>Recruit</a>
+  <a href="index.html" class="logo"><img src="images/core-recruit-logo.png" alt="Core Recruit" style="height:42px;width:auto;display:block;"></a>
   <ul>
     <li><a href="index.html" class="active">Acasă</a></li>
     <li><a href="about.html">Despre noi</a></li>
@@ -272,7 +272,7 @@
 
 <footer>
   <div class="footer-brand">
-    <a href="index.html" class="footer-logo">Core<span>.</span>Recruit</a>
+    <a href="index.html" class="footer-logo"><img src="images/core-recruit-logo.png" alt="Core Recruit" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1);"></a>
     <p class="footer-tagline">HR Enthusiasts din Cluj-Napoca. Parteneri de încredere pentru recrutare și dezvoltare organizațională.</p>
   </div>
   <div class="footer-col">
@@ -302,7 +302,6 @@
 
 <script src="js/main.js"></script>
 <script>
-// Load live jobs from Traffit into hero widget
 async function loadHeroJobs() {
   const container = document.getElementById('hero-jobs');
   if (!container) return;
@@ -322,31 +321,12 @@ async function loadHeroJobs() {
       </div>`).join('');
   } catch(e) {
     container.innerHTML = `<div style="padding:1.5rem;text-align:center;">
-      <a href="careers.html" style="font-size:0.85rem;color:var(--blue);text-decoration:none;font-family:Inter,sans-serif;">
+      <a href="careers.html" style="font-size:0.85rem;color:var(--blue);text-decoration:none;">
         Vezi toate pozițiile deschise →
       </a></div>`;
   }
 }
-
-// Load logo from CMS settings if uploaded
-async function loadLogo() {
-  try {
-    const res = await fetch('/content/settings/site.json');
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data.logo && data.logo.trim()) {
-      document.querySelectorAll('#nav-logo-img,#footer-logo-img').forEach(el => {
-        if (el) { el.src = data.logo; el.style.display = 'block'; }
-      });
-      document.querySelectorAll('.logo-text,.footer-logo-text').forEach(el => el.style.display = 'none');
-    }
-  } catch(e) {}
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  loadHeroJobs();
-  loadLogo();
-});
+document.addEventListener('DOMContentLoaded', loadHeroJobs);
 </script>
 </body>
 </html>
