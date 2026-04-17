@@ -105,7 +105,10 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Core<span>.</span>Recruit</a>
+  <a href="index.html" class="logo" id="nav-logo-link">
+    <img src="/images/core-recruit-logo.png" alt="Core Recruit" id="nav-logo-img" style="height:44px;width:auto;display:block;">
+    <span id="nav-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span>
+  </a>
   <ul>
     <li><a href="index.html">Acasa</a></li>
     <li><a href="about.html">Despre noi</a></li>
@@ -165,7 +168,10 @@
 
 <footer>
   <div class="footer-brand">
-    <a href="index.html" class="footer-logo">Core<span>.</span>Recruit</a>
+    <a href="index.html" class="footer-logo" id="footer-logo-link">
+      <img src="/images/core-recruit-logo.png" alt="Core Recruit" id="footer-logo-img" style="height:38px;width:auto;display:block;filter:brightness(0) invert(1);">
+      <span id="footer-logo-text" style="display:none;">Core<span style="color:var(--red);">.</span>Recruit</span>
+    </a>
     <p class="footer-tagline">HR Enthusiasts din Cluj-Napoca.</p>
   </div>
   <div class="footer-col">
@@ -197,3 +203,29 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/em
+<script>
+async function loadLogo() {
+  try {
+    const res = await fetch('/content/settings/site.json');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.logo && data.logo.trim() && data.logo !== '/images/core-recruit-logo.png') {
+      const navImg = document.getElementById('nav-logo-img');
+      const footerImg = document.getElementById('footer-logo-img');
+      if (navImg) { navImg.src = data.logo; navImg.style.filter = ''; }
+      if (footerImg) { footerImg.src = data.logo; }
+    }
+    if (!data.logo || !data.logo.trim()) {
+      const ni = document.getElementById('nav-logo-img');
+      const nt = document.getElementById('nav-logo-text');
+      const fi = document.getElementById('footer-logo-img');
+      const ft = document.getElementById('footer-logo-text');
+      if (ni) ni.style.display = 'none';
+      if (nt) nt.style.display = 'inline';
+      if (fi) fi.style.display = 'none';
+      if (ft) ft.style.display = 'inline';
+    }
+  } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', loadLogo);
+</script>
