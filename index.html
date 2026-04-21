@@ -11,18 +11,14 @@
   /* HERO */
   .hero {
     background: var(--blue); padding: 6rem 4rem 5rem; position: relative; overflow: hidden;
-  }
-  .hero::after {
-    content: ''; position: absolute; right: -80px; bottom: -80px;
-    width: 420px; height: 420px; border-radius: 50%;
-    border: 70px solid rgba(192,37,31,0.12); pointer-events: none;
+    display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 4rem;
   }
   .hero-watermark {
-    position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
     font-family: 'Cormorant Garamond', serif; font-size: 260px; font-weight: 300;
-    color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; user-select: none;
+    color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; user-select: none;
   }
-  .hero-inner { position: relative; z-index: 1; max-width: 760px; }
+  .hero-left { position: relative; z-index: 1; }
   .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
   .hero-eyebrow .eyebrow-line { width: 32px; height: 1px; background: var(--red); }
   .hero-eyebrow .eyebrow-text { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
@@ -34,10 +30,13 @@
   h1 em { font-style: italic; color: rgba(255,255,255,0.55); }
   .hero-desc { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.9; max-width: 480px; margin-bottom: 3rem; font-weight: 300; }
   .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.12); flex-wrap: wrap; }
-  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: white; line-height: 1; }
-  .stat-val sup { font-size: 1.4rem; vertical-align: super; color: var(--red); }
-  .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .hero-right { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 4rem; }
+  .hero-stats { display: flex; flex-direction: column; gap: 0; }
+  .stat-item { padding: 2rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .stat-item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: white; line-height: 1; }
+  .stat-val sup { font-size: 1.6rem; vertical-align: super; color: var(--red); }
+  .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
 
   /* SERVICES SECTION */
   .services { padding: 7rem 4rem; background: var(--white); }
@@ -87,8 +86,11 @@
   .cta-right { flex-shrink: 0; }
 
   @media (max-width: 960px) {
-    .hero { padding: 4rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
     .hero-watermark { display: none; }
+    .hero-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 2rem; }
+    .hero-stats { flex-direction: row; gap: 2rem; }
+    .stat-item { border: none !important; padding: 0; }
     .services, .about-strip, .testimonials, .contact-cta { padding: 4rem 1.5rem; }
     .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .about-strip { grid-template-columns: 1fr; gap: 3rem; }
@@ -129,7 +131,7 @@
 
 <section class="hero">
   <div class="hero-watermark">HR</div>
-  <div class="hero-inner">
+  <div class="hero-left">
     <div class="hero-eyebrow">
       <div class="eyebrow-line"></div>
       <span class="eyebrow-text">Cluj-Napoca · România</span>
@@ -144,10 +146,12 @@
       <a href="services.html" class="btn-white">Serviciile noastre</a>
       <a href="contact.html" class="btn-white" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);">Contactează-ne</a>
     </div>
+  </div>
+  <div class="hero-right">
     <div class="hero-stats">
-      <div><div class="stat-val">10<sup>+</sup></div><div class="stat-label">Ani experiență</div></div>
-      <div><div class="stat-val">200<sup>+</sup></div><div class="stat-label">Plasări reușite</div></div>
-      <div><div class="stat-val">50<sup>+</sup></div><div class="stat-label">Parteneri</div></div>
+      <div class="stat-item"><div class="stat-val">10<sup>+</sup></div><div class="stat-label">Ani experiență</div></div>
+      <div class="stat-item"><div class="stat-val">200<sup>+</sup></div><div class="stat-label">Plasări reușite</div></div>
+      <div class="stat-item"><div class="stat-val">50<sup>+</sup></div><div class="stat-label">Parteneri</div></div>
     </div>
   </div>
 </section>
