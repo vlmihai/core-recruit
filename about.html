@@ -223,7 +223,7 @@ function renderTeam(members) {
       <div class="team-card-body">
         <div class="team-name">${m.name}</div>
         <div class="team-role">${m.role}</div>
-        <p class="team-bio">${m.bio}</p>
+        <p class="team-bio">${m.body && m.body.trim() ? m.body.trim() : m.bio}</p>
         ${m.linkedin ? `<a href="${m.linkedin}" target="_blank" class="team-linkedin">LinkedIn →</a>` : ''}
       </div>
     </div>
