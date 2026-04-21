@@ -10,48 +10,34 @@
 <style>
   /* HERO */
   .hero {
-    min-height: 90vh; display: grid; grid-template-columns: 1.1fr 0.9fr;
-    padding: 0 4rem; align-items: center; position: relative; overflow: hidden;
+    background: var(--blue); padding: 6rem 4rem 5rem; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; right: -80px; bottom: -80px;
+    width: 420px; height: 420px; border-radius: 50%;
+    border: 70px solid rgba(192,37,31,0.12); pointer-events: none;
   }
   .hero-watermark {
-    position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
-    font-family: 'Cormorant Garamond', serif; font-size: 220px; font-weight: 300;
-    color: rgba(26,61,158,0.05); line-height: 1; pointer-events: none; user-select: none;
+    position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif; font-size: 260px; font-weight: 300;
+    color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; user-select: none;
   }
-  .hero-left { padding: 5rem 4rem 5rem 0; position: relative; z-index: 1; }
+  .hero-inner { position: relative; z-index: 1; max-width: 760px; }
   .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
   .hero-eyebrow .eyebrow-line { width: 32px; height: 1px; background: var(--red); }
-  .hero-eyebrow .eyebrow-text { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+  .hero-eyebrow .eyebrow-text { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
   h1 {
     font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem);
-    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; color: var(--text); margin-bottom: 2rem;
+    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; color: white; margin-bottom: 2rem;
   }
-  h1 strong { font-weight: 600; color: var(--blue); display: block; }
-  h1 em { font-style: italic; color: var(--red); }
-  .hero-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.9; max-width: 400px; margin-bottom: 3rem; font-weight: 300; }
+  h1 strong { font-weight: 600; color: white; display: block; }
+  h1 em { font-style: italic; color: rgba(255,255,255,0.55); }
+  .hero-desc { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.9; max-width: 480px; margin-bottom: 3rem; font-weight: 300; }
   .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
-  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--blue); line-height: 1; }
-  .stat-val sup { font-size: 1.4rem; vertical-align: super; }
-  .stat-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase; }
-
-  /* HERO RIGHT */
-  .hero-right { padding: 5rem 0 5rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
-  .hero-visual { width: 100%; max-width: 400px; background: var(--white); border: 1px solid var(--border-strong); overflow: hidden; box-shadow: 0 20px 60px rgba(26,61,158,0.1); }
-  .visual-header { background: var(--blue); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-  .visual-header-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: white; letter-spacing: 0.04em; }
-  .visual-header-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); padding: 0.25rem 0.6rem; border: 1px solid rgba(255,255,255,0.2); }
-  .visual-body { padding: 1.5rem 2rem; }
-  .job-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); }
-  .job-row:last-child { border-bottom: none; }
-  .job-title { font-size: 0.875rem; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
-  .job-sub { font-size: 0.75rem; color: var(--text-muted); }
-  .job-badge { font-size: 0.65rem; padding: 0.2rem 0.6rem; letter-spacing: 0.06em; font-weight: 500; white-space: nowrap; margin-top: 2px; }
-  .badge-open { background: rgba(26,61,158,0.08); color: var(--blue); border: 1px solid rgba(26,61,158,0.15); }
-  .badge-hot { background: rgba(192,37,31,0.08); color: var(--red); border: 1px solid rgba(192,37,31,0.15); }
-  .visual-footer { background: var(--bg2); padding: 1.1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
-  .vf-text { font-size: 0.75rem; color: var(--text-muted); }
-  .vf-btn { font-size: 0.72rem; color: var(--red); background: none; border: none; cursor: pointer; font-weight: 500; font-family: 'Inter', sans-serif; text-decoration: none; }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.12); flex-wrap: wrap; }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: white; line-height: 1; }
+  .stat-val sup { font-size: 1.4rem; vertical-align: super; color: var(--red); }
+  .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
   /* SERVICES SECTION */
   .services { padding: 7rem 4rem; background: var(--white); }
@@ -101,9 +87,8 @@
   .cta-right { flex-shrink: 0; }
 
   @media (max-width: 960px) {
-    .hero { grid-template-columns: 1fr; padding: 0 1.5rem; min-height: auto; }
-    .hero-left { padding: 3.5rem 0 2rem; }
-    .hero-right { display: none; }
+    .hero { padding: 4rem 1.5rem; }
+    .hero-watermark { display: none; }
     .services, .about-strip, .testimonials, .contact-cta { padding: 4rem 1.5rem; }
     .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .about-strip { grid-template-columns: 1fr; gap: 3rem; }
@@ -144,7 +129,7 @@
 
 <section class="hero">
   <div class="hero-watermark">HR</div>
-  <div class="hero-left">
+  <div class="hero-inner">
     <div class="hero-eyebrow">
       <div class="eyebrow-line"></div>
       <span class="eyebrow-text">Cluj-Napoca · România</span>
@@ -156,26 +141,13 @@
     </h1>
     <p class="hero-desc">Creștem împreună — prin recrutare atentă, team-building autentic și programe de formare care fac diferența.</p>
     <div class="hero-btns">
-      <a href="services.html" class="btn-primary">Serviciile noastre</a>
-      <a href="contact.html" class="btn-ghost">Contactează-ne</a>
+      <a href="services.html" class="btn-white">Serviciile noastre</a>
+      <a href="contact.html" class="btn-white" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);">Contactează-ne</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-val">10<sup>+</sup></div><div class="stat-label">Ani experiență</div></div>
       <div><div class="stat-val">200<sup>+</sup></div><div class="stat-label">Plasări reușite</div></div>
       <div><div class="stat-val">50<sup>+</sup></div><div class="stat-label">Parteneri</div></div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-visual">
-      <div class="visual-header">
-        <span class="visual-header-title">Oportunități active</span>
-        <span class="visual-header-tag">Cluj-Napoca</span>
-      </div>
-      <div class="visual-body" id="hero-jobs"><div style="padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.82rem;">Se încarcă pozițiile...</div></div>
-      <div class="visual-footer">
-        <span class="vf-text">Vezi toate pozițiile</span>
-        <a href="careers.html" class="vf-btn">Cariere →</a>
-      </div>
     </div>
   </div>
 </section>
@@ -308,34 +280,6 @@
 
 <script src="js/main.js"></script>
 <script>
-// Load live jobs from Traffit into hero widget
-async function loadHeroJobs() {
-  const container = document.getElementById('hero-jobs');
-  if (!container) return;
-  try {
-    const res = await fetch('https://corerecruit.traffit.com/public/an/getJobOffers/');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    const jobs = (Array.isArray(data) ? data : (data.offers||data.jobs||[])).slice(0,4);
-    if (!jobs.length) throw new Error();
-    container.innerHTML = jobs.map(j => `
-      <div class="job-row">
-        <div>
-          <div class="job-title">${j.name||j.title||'Pozitie deschisa'}</div>
-          <div class="job-sub">${j.department||j.category||''} · ${j.work_mode||j.type||'Full-time'}</div>
-        </div>
-        <span class="job-badge badge-open">Deschis</span>
-      </div>`).join('');
-  } catch(e) {
-    container.innerHTML = `<div style="padding:1.5rem;text-align:center;">
-      <a href="careers.html" style="font-size:0.85rem;color:var(--blue);text-decoration:none;font-family:Inter,sans-serif;">
-        Vezi toate pozițiile deschise →
-      </a></div>`;
-  }
-}
-
-// Logo loader — hardcoded image shown by default
-// If CMS has a different logo in site.json, it swaps automatically
 async function loadLogo() {
   try {
     const res = await fetch('/content/settings/site.json');
@@ -371,7 +315,6 @@ async function loadLogo() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  loadHeroJobs();
   loadLogo();
 });
 </script>
