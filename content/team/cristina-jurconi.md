@@ -6,7 +6,7 @@ bio: Am explorat lumea resurselor umane din diverse unghiuri de mai bine de 15
   Developer. De peste 5 ani, am adăugat provocarea de a deveni antreprenor, în
   calitate de co-fondator al Core Recruit, agenție specializată în Recrutare &
   Consultanță.
-photo: /images/uploads/cristina-j.jpg
+photo: ""
 linkedin: https://www.linkedin.com/in/cristina-jurconi-02abbb10/
 order: 1
 ---
