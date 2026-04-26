@@ -40,11 +40,16 @@ function parseFrontMatter(text) {
   const match = text.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return { meta: {}, body: text };
   const meta = {};
+  let currentKey = null;
   match[1].split('\n').forEach(line => {
-    const [key, ...rest] = line.split(':');
-    if (key && rest.length) {
-      let val = rest.join(':').trim().replace(/^"|"$/g, '').replace(/^'|'$/g, '');
-      meta[key.trim()] = val;
+    const colonIdx = line.indexOf(':');
+    if (colonIdx > 0 && !line.startsWith(' ') && !line.startsWith('\t')) {
+      const key = line.slice(0, colonIdx).trim();
+      const val = line.slice(colonIdx + 1).trim().replace(/^"|"$/g, '').replace(/^'|'$/g, '');
+      meta[key] = val;
+      currentKey = key;
+    } else if (currentKey && line.trim()) {
+      meta[currentKey] += ' ' + line.trim().replace(/^"|"$/g, '');
     }
   });
   return { meta, body: text.replace(/^---\n[\s\S]*?\n---\n?/, '') };
