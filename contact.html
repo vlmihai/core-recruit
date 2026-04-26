@@ -42,9 +42,7 @@
   #form-status.success { color: #1a6e1a; }
   #form-status.error { color: var(--red); }
 
-  /* EmailJS notice */
-  .emailjs-note { background: var(--bg2); border: 1px solid var(--border); padding: 0.9rem 1.2rem; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-  .emailjs-note strong { color: var(--blue); }
+
 
   .map-section { padding: 0 4rem 6rem; background: var(--white); }
   .map-embed { width: 100%; height: 380px; border: 1px solid var(--border); background: var(--bg2); display: flex; align-items: center; justify-content: center; }
@@ -110,9 +108,7 @@
   </div>
 
   <div class="fade-in">
-    <div class="emailjs-note">
-      <strong>EmailJS nu este configurat.</strong> Urmează ghidul de setup pentru a activa trimiterea de emailuri. Momentan, formul trimite pe <strong>office@core-recruit.ro</strong> via mailto.
-    </div>
+
     <form class="contact-form-wrap" id="contact-form">
       <div class="form-row">
         <div class="form-group">
@@ -175,30 +171,9 @@
   <div class="footer-social"><a href="https://www.facebook.com/corerecruit.ro/" target="_blank">Facebook</a><a href="https://www.linkedin.com/company/core-recruit/" target="_blank">LinkedIn</a></div>
 </div>
 
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-// ============================================================
-// EMAILJS SETUP — Contact Form
-// HOW TO SET UP:
-// 1. Go to https://www.emailjs.com and create a free account
-// 2. Add an Email Service (Gmail, Outlook, etc.)
-// 3. Create an Email Template — use variables: {{from_name}}, {{from_email}}, {{company}}, {{phone}}, {{service}}, {{message}}
-// 4. Copy your Public Key, Service ID, and Template ID below
-// 5. That's it! The form will now send emails to office@core-recruit.ro
-// ============================================================
-
-const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-
-const isEmailJSConfigured = EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY';
-
-if (isEmailJSConfigured) {
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-  document.querySelector('.emailjs-note').style.display = 'none';
-}
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHb2EsOjVSIzw-tdauoAc08YPN_RrByfD54o0iOrbHJHY2dtEf8sblLExKYJN7R-sS/exec';
 
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -209,28 +184,27 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   status.textContent = '';
   status.className = '';
 
-  if (isEmailJSConfigured) {
-    try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this);
-      status.textContent = 'Mesaj trimis cu succes! Te contactăm în 24 ore.';
-      status.className = 'success';
-      this.reset();
-    } catch (err) {
-      status.textContent = 'Eroare la trimitere. Contactează-ne direct la office@core-recruit.ro';
-      status.className = 'error';
-    }
-  } else {
-    // Fallback: open default email client
-    const name = this.from_name.value;
-    const email = this.from_email.value;
-    const company = this.company.value;
-    const service = this.service.value;
-    const message = this.message.value;
-    const subject = encodeURIComponent(`Contact Core Recruit — ${service || 'Mesaj nou'}`);
-    const body = encodeURIComponent(`Nume: ${name}\nEmail: ${email}\nCompanie: ${company}\nServiciu: ${service}\n\nMesaj:\n${message}`);
-    window.location.href = `mailto:office@core-recruit.ro?subject=${subject}&body=${body}`;
-    status.textContent = 'Se deschide clientul de email...';
+  const data = {
+    name:    this.from_name.value,
+    email:   this.from_email.value,
+    phone:   this.phone.value,
+    service: this.service.value,
+    message: this.message.value
+  };
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    status.textContent = 'Mesaj trimis cu succes! Te contactăm în 24 ore.';
     status.className = 'success';
+    this.reset();
+  } catch (err) {
+    status.textContent = 'Eroare la trimitere. Contactează-ne direct la office@core-recruit.ro';
+    status.className = 'error';
   }
 
   btn.textContent = 'Trimite mesajul';
