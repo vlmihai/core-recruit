@@ -37,8 +37,16 @@
     outline: none !important;
     box-shadow: none !important;
   }
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x button,
-  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x input[type="submit"] {
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x button[type="reset"],
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x button.clear,
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x a[class*="clear"],
+  #traffit-an-filters-xtxrxaxfxixtx2x0x1x6x button:not([type="submit"]) {
+    color: var(--blue) !important;
+    background: white !important;
+    border: 1px solid var(--blue) !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+  }
     background: var(--blue) !important;
     color: white !important;
     border: none !important;
@@ -147,17 +155,18 @@
       <h3>Nu ai gasit <strong>ce cauti?</strong></h3>
       <p>Trimite-ne CV-ul tau si te contactam atunci cand apare o oportunitate potrivita.</p>
       <p style="font-size:0.8rem;">
-        <br>office@core-recruit.ro<br> 0264 702 345
+        <a href="#" id="careers-email-1"></a><script>var e1=document.getElementById("careers-email-1");e1.textContent="office@core-recruit.ro";e1.href="mailto:office@core-recruit.ro";</script>
+        &middot; 0264 702 345
       </p>
     </div>
     <div>
       <form class="spont-form" id="spont-form">
         <div class="form-row-2">
-          <input type="text" placeholder="Numele tau" required>
-          <input type="email" placeholder="Email" required>
+          <input type="text" name="name" placeholder="Numele tau" required>
+          <input type="email" name="email" placeholder="Email" required>
         </div>
-        <input type="text" placeholder="Domeniu de interes">
-        <textarea placeholder="Cateva cuvinte despre tine si experienta ta..."></textarea>
+        <input type="text" name="domain" placeholder="Domeniu de interes">
+        <textarea name="message" placeholder="Cateva cuvinte despre tine si experienta ta..."></textarea>
         <button type="submit" class="btn-primary" style="align-self:flex-start;">Trimite candidatura</button>
         <div id="spont-success">Multumim! Te vom contacta in curand.</div>
       </form>
@@ -186,7 +195,11 @@
   </div>
   <div class="footer-col">
     <h4>Contact</h4>
-    <p>Piața Mihai Viteazu 38, Ap.1<br>Cluj-Napoca, România<br><br>office@core-recruit.ro<br>0264 702 345</p>
+    <p>
+      <a href="#" id="careers-email-2"></a><script>var e2=document.getElementById("careers-email-2");e2.textContent="office@core-recruit.ro";e2.href="mailto:office@core-recruit.ro";</script><br>
+      0264 702 345<br>
+      Piata Mihai Viteazu 38
+    </p>
   </div>
 </footer>
 <div class="footer-bottom">
@@ -223,4 +236,37 @@ async function loadLogo() {
   } catch(e) {}
 }
 document.addEventListener('DOMContentLoaded', loadLogo);
+
+document.getElementById('spont-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const success = document.getElementById('spont-success');
+  btn.textContent = 'Se trimite...';
+  btn.disabled = true;
+
+  const data = {
+    name:    this.name.value,
+    email:   this.email.value,
+    service: this.domain.value || 'Candidatura spontana',
+    message: this.message.value || '—',
+    phone:   '—'
+  };
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbxHb2EsOjVSIzw-tdauoAc08YPN_RrByfD54o0iOrbHJHY2dtEf8sblLExKYJN7R-sS/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    });
+    success.style.display = 'block';
+    this.reset();
+  } catch(err) {
+    success.textContent = 'Eroare. Trimite CV-ul direct la office@core-recruit.ro';
+    success.style.display = 'block';
+  }
+
+  btn.textContent = 'Trimite candidatura';
+  btn.disabled = false;
+});
 </script>
