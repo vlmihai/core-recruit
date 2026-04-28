@@ -232,8 +232,6 @@ async function loadLogo() {
     }
   } catch(e) {}
 }
-document.addEventListener('DOMContentLoaded', loadLogo);
-
 document.getElementById('spont-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('button[type="submit"]');
@@ -242,12 +240,30 @@ document.getElementById('spont-form').addEventListener('submit', async function(
   btn.disabled = true;
 
   const data = {
-    name:    this.name.value,
-    email:   this.email.value,
-    service: this.domain.value || 'Candidatura spontana',
-    message: this.message.value || '—',
-    phone:   '—'
+    name:    this.elements['name'].value,
+    email:   this.elements['email'].value,
+    phone:   this.elements['phone'].value || '—',
+    service: this.elements['domain'].value || 'Candidatura spontana',
+    message: this.elements['message'].value || '—'
   };
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbxHb2EsOjVSIzw-tdauoAc08YPN_RrByfD54o0iOrbHJHY2dtEf8sblLExKYJN7R-sS/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    });
+    success.style.display = 'block';
+    this.reset();
+  } catch(err) {
+    success.textContent = 'Eroare. Contacteaza-ne direct la office@core-recruit.ro';
+    success.style.display = 'block';
+  }
+
+  btn.textContent = 'Trimite candidatura';
+  btn.disabled = false;
+});
 
   try {
     await fetch('https://script.google.com/macros/s/AKfycbxHb2EsOjVSIzw-tdauoAc08YPN_RrByfD54o0iOrbHJHY2dtEf8sblLExKYJN7R-sS/exec', {
