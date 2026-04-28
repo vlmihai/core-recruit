@@ -196,7 +196,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(data)
     });
     status.textContent = 'Mesaj trimis cu succes! Te contactăm în 24 ore.';
