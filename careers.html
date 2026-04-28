@@ -207,7 +207,6 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/em
 <script>
 async function loadLogo() {
   try {
@@ -220,18 +219,10 @@ async function loadLogo() {
       if (navImg) { navImg.src = data.logo; navImg.style.filter = ''; }
       if (footerImg) { footerImg.src = data.logo; }
     }
-    if (!data.logo || !data.logo.trim()) {
-      const ni = document.getElementById('nav-logo-img');
-      const nt = document.getElementById('nav-logo-text');
-      const fi = document.getElementById('footer-logo-img');
-      const ft = document.getElementById('footer-logo-text');
-      if (ni) ni.style.display = 'none';
-      if (nt) nt.style.display = 'inline';
-      if (fi) fi.style.display = 'none';
-      if (ft) ft.style.display = 'inline';
-    }
   } catch(e) {}
 }
+document.addEventListener('DOMContentLoaded', loadLogo);
+
 document.getElementById('spont-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('button[type="submit"]');
@@ -264,22 +255,6 @@ document.getElementById('spont-form').addEventListener('submit', async function(
   btn.textContent = 'Trimite candidatura';
   btn.disabled = false;
 });
-
-  try {
-    await fetch('https://script.google.com/macros/s/AKfycbxHb2EsOjVSIzw-tdauoAc08YPN_RrByfD54o0iOrbHJHY2dtEf8sblLExKYJN7R-sS/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(data)
-    });
-    success.style.display = 'block';
-    this.reset();
-  } catch(err) {
-    success.textContent = 'Eroare. Trimite CV-ul direct la office@core-recruit.ro';
-    success.style.display = 'block';
-  }
-
-  btn.textContent = 'Trimite candidatura';
-  btn.disabled = false;
-});
 </script>
+</body>
+</html>
