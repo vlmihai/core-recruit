@@ -146,7 +146,9 @@ function renderPartners(data) {
   if (!g) return;
   g.innerHTML = data.map(p=>`
     <div class="logo-cell">
+      ${p.website ? `<a href="${p.website}" target="_blank" rel="noopener">` : ''}
       ${p.logo?`<img src="${p.logo}" alt="${p.name}" style="max-height:50px;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:0.65;">`:`<span>${p.name}</span>`}
+      ${p.website ? `</a>` : ''}
     </div>`).join('');
 }
 
