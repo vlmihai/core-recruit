@@ -152,9 +152,9 @@ function renderPartners(data) {
 
 async function loadAll() {
   if (window.CMS) {
-    const t = await window.CMS.loadCollection('testimonials', TESTIMONIAL_SLUGS);
+    const t = await window.CMS.loadAllFromFolder('testimonials');
     renderTestimonials(t.length ? t.sort((a,b)=>(+a.order||0)-(+b.order||0)) : FALLBACK_T);
-    const p = await window.CMS.loadCollection('partners', PARTNER_SLUGS);
+    const p = await window.CMS.loadAllFromFolder('partners');
     renderPartners(p.length ? p.sort((a,b)=>(+a.order||0)-(+b.order||0)) : FALLBACK_P);
   } else {
     renderTestimonials(FALLBACK_T);

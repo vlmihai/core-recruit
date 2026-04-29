@@ -104,7 +104,18 @@ async function applyContactSettings() {
 document.addEventListener('DOMContentLoaded', applyContactSettings);
 
 // Export for use in individual pages
-window.CMS = { parseFrontMatter, fetchContent, loadCollection, loadSettings };
+async function loadAllFromFolder(folder) {
+  try {
+    const res = await fetch(`/content/${folder}/index.json`);
+    if (!res.ok) return [];
+    const slugs = await res.json();
+    return await loadCollection(folder, slugs);
+  } catch(e) {
+    return [];
+  }
+}
+
+window.CMS = { parseFrontMatter, fetchContent, loadCollection, loadAllFromFolder, loadSettings };
 
 
 // =========================================
