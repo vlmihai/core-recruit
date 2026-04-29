@@ -76,7 +76,8 @@ collections:
     label_singular: "Partener"
     folder: "content/partners"
     create: true
-    slug: "{{slug}}"
+    slug: "{{name | slugify}}"
+    identifier_field: name
     summary: "{{name}}"
     fields:
       - { label: "Nume companie", name: "name", widget: "string" }
