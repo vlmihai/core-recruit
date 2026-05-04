@@ -23,7 +23,7 @@
   .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3.5rem; }
   .team-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; transition: box-shadow 0.3s; }
   .team-card:hover { box-shadow: 0 8px 32px rgba(26,61,158,0.08); }
-  .team-card-img { width:100%; aspect-ratio:3/2; object-fit:cover; background:var(--bg3); display:flex; align-items:center; justify-content:center; }
+  .team-card-img { width:100%; aspect-ratio:3/2; object-fit:cover; object-position:top; background:var(--bg3); display:flex; align-items:center; justify-content:center; }
   .team-card-img-placeholder { width:100%; aspect-ratio:3/2; background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%); display:flex; align-items:center; justify-content:center; }
   .team-card-img-placeholder span { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--blue-light); opacity:0.4; }
   .team-card-body { padding: 1.5rem; }
@@ -217,7 +217,7 @@ function renderTeam(members) {
   grid.innerHTML = members.map(m => `
     <div class="team-card fade-in">
       ${m.photo
-        ? `<img src="${m.photo}" alt="${m.name}" class="team-card-img" style="width:100%;aspect-ratio:3/2;object-fit:cover;">`
+        ? `<img src="${m.photo}" alt="${m.name}" class="team-card-img" style="width:100%;aspect-ratio:3/2;object-fit:cover; object-position:top;">`
         : `<div class="team-card-img-placeholder"><span>${getInitials(m.name)}</span></div>`
       }
       <div class="team-card-body">
