@@ -14,9 +14,35 @@
   .service-block:last-child { border-bottom: none; }
   .service-block.reverse { direction: rtl; }
   .service-block.reverse > * { direction: ltr; }
-  .sb-visual { background: var(--bg2); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .sb-visual-num { font-family:'Cormorant Garamond',serif; font-size:8rem; font-weight:300; color:rgba(26,61,158,0.08); position:absolute; bottom:-1rem; right:1rem; line-height:1; }
-  .sb-visual-icon { position:relative;z-index:1; }
+  .sb-visual {
+    aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1a3d9e 0%, #0f2460 100%);
+  }
+  .sb-visual::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+  }
+  .sb-visual-deco {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .sb-visual-deco-circle {
+    position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.08);
+  }
+  .sb-visual-num {
+    font-family:'Cormorant Garamond',serif; font-size:11rem; font-weight:300;
+    color:rgba(255,255,255,0.04); position:absolute; bottom:-2rem; right:1.5rem; line-height:1;
+  }
+  .sb-visual-icon { position:relative; z-index:1; }
+  .sb-visual-label {
+    position: absolute; bottom: 1.5rem; left: 1.8rem; z-index: 1;
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif;
+  }
+  .sb-visual-line {
+    position: absolute; top: 1.8rem; left: 1.8rem; z-index: 1;
+    width: 32px; height: 1px; background: rgba(192,37,31,0.7);
+  }
   .sb-content {}
   .sb-num { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--red); font-weight:300; letter-spacing:0.1em; margin-bottom:0.8rem; }
   .sb-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; color:var(--text); margin-bottom:1.2rem; line-height:1.1; }
@@ -64,14 +90,21 @@
 <section class="services-main">
   <div class="service-block" id="recrutare">
     <div class="sb-visual fade-in">
+      <div class="sb-visual-deco">
+        <div class="sb-visual-deco-circle" style="width:280px;height:280px;top:-80px;right:-80px;"></div>
+        <div class="sb-visual-deco-circle" style="width:160px;height:160px;bottom:-40px;left:-40px;"></div>
+        <div class="sb-visual-deco-circle" style="width:80px;height:80px;top:40%;left:20%;border-color:rgba(192,37,31,0.2);"></div>
+      </div>
+      <div class="sb-visual-line"></div>
       <div class="sb-visual-num">01</div>
       <div class="sb-visual-icon">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <circle cx="40" cy="28" r="16" stroke="#1a3d9e" stroke-width="2"/>
-          <path d="M12 72c0-15.5 12.5-28 28-28s28 12.5 28 28" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
-          <path d="M58 38l8 8-8 8M66 46H52" stroke="#c0251f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="110" height="110" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/>
+          <path d="M12 72c0-15.5 12.5-28 28-28s28 12.5 28 28" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M58 38l8 8-8 8M66 46H52" stroke="#e06060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
+      <div class="sb-visual-label">Recrutare</div>
     </div>
     <div class="sb-content fade-in">
       <div class="sb-num">Serviciul 01</div>
@@ -92,16 +125,23 @@
 
   <div class="service-block reverse" id="teambuilding">
     <div class="sb-visual fade-in">
+      <div class="sb-visual-deco">
+        <div class="sb-visual-deco-circle" style="width:300px;height:300px;bottom:-100px;left:-100px;"></div>
+        <div class="sb-visual-deco-circle" style="width:140px;height:140px;top:-30px;right:20%;"></div>
+        <div class="sb-visual-deco-circle" style="width:60px;height:60px;top:30%;right:15%;border-color:rgba(192,37,31,0.2);"></div>
+      </div>
+      <div class="sb-visual-line"></div>
       <div class="sb-visual-num">02</div>
       <div class="sb-visual-icon">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <rect x="8" y="16" width="64" height="48" rx="4" stroke="#1a3d9e" stroke-width="2"/>
-          <circle cx="28" cy="34" r="8" stroke="#c0251f" stroke-width="2"/>
-          <circle cx="52" cy="34" r="8" stroke="#c0251f" stroke-width="2"/>
-          <path d="M14 60c1.5-7 7-12 14-12s12.5 5 14 12" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
-          <path d="M38 60c1.5-7 7-12 14-12s12.5 5 14 12" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
+        <svg width="110" height="110" viewBox="0 0 80 80" fill="none">
+          <rect x="8" y="16" width="64" height="48" rx="4" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/>
+          <circle cx="28" cy="34" r="8" stroke="#e06060" stroke-width="1.5"/>
+          <circle cx="52" cy="34" r="8" stroke="#e06060" stroke-width="1.5"/>
+          <path d="M14 60c1.5-7 7-12 14-12s12.5 5 14 12" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M38 60c1.5-7 7-12 14-12s12.5 5 14 12" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
+      <div class="sb-visual-label">Team-building</div>
     </div>
     <div class="sb-content fade-in">
       <div class="sb-num">Serviciul 02</div>
@@ -122,14 +162,21 @@
 
   <div class="service-block" id="training">
     <div class="sb-visual fade-in">
+      <div class="sb-visual-deco">
+        <div class="sb-visual-deco-circle" style="width:240px;height:240px;top:-60px;left:-60px;"></div>
+        <div class="sb-visual-deco-circle" style="width:180px;height:180px;bottom:-50px;right:-50px;"></div>
+        <div class="sb-visual-deco-circle" style="width:90px;height:90px;top:50%;left:55%;border-color:rgba(192,37,31,0.2);"></div>
+      </div>
+      <div class="sb-visual-line"></div>
       <div class="sb-visual-num">03</div>
       <div class="sb-visual-icon">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <path d="M12 68V24l28-12 28 12v44" stroke="#1a3d9e" stroke-width="2" stroke-linejoin="round"/>
-          <rect x="34" y="50" width="12" height="18" stroke="#c0251f" stroke-width="2"/>
-          <path d="M22 36h10M48 36h10M22 48h10M48 48h10" stroke="#1a3d9e" stroke-width="2" stroke-linecap="round"/>
+        <svg width="110" height="110" viewBox="0 0 80 80" fill="none">
+          <path d="M12 68V24l28-12 28 12v44" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linejoin="round"/>
+          <rect x="34" y="50" width="12" height="18" stroke="#e06060" stroke-width="1.5"/>
+          <path d="M22 36h10M48 36h10M22 48h10M48 48h10" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
+      <div class="sb-visual-label">Training Soft Skills</div>
     </div>
     <div class="sb-content fade-in">
       <div class="sb-num">Serviciul 03</div>
