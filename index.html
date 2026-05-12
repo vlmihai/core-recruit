@@ -12,11 +12,11 @@
   .hero {
     background: var(--blue); padding: 5rem 4rem 4rem; position: relative; overflow: hidden;
   }
-  .hero-watermark {
-  position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif; font-size: 180px; font-weight: 300;
-  color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none; user-select: none;
-}
+  .hero::after {
+    content: ''; position: absolute; right: -60px; bottom: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    border: 60px solid rgba(192,37,31,0.12); pointer-events: none;
+  }
   .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
   .hero-eyebrow .eyebrow-line { width: 32px; height: 1px; background: rgba(255,255,255,0.4); }
   .hero-eyebrow .eyebrow-text { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
