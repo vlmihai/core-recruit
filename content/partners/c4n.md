@@ -1,6 +1,6 @@
 ---
 name: C4N
-logo: ""
-website: ""
+logo: /images/uploads/c4n.png
+website: https://code4nord.com/
 order: 3
 ---
