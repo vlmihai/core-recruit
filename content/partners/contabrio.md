@@ -1,6 +1,6 @@
 ---
 name: Contabrio
-logo: ""
-website: ""
+logo: /images/uploads/logo-contabrio_60.png
+website: https://contabrio.ro/
 order: 10
 ---
