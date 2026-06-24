@@ -22,6 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // Inject tagline strip below nav (applies to all pages automatically)
+  const mobileMenuEl = document.getElementById('mobile-menu');
+  if (mobileMenuEl) {
+    const strip = document.createElement('div');
+    strip.className = 'tagline-strip';
+    strip.innerHTML = '<span>Change the status quo</span>';
+    mobileMenuEl.insertAdjacentElement('afterend', strip);
+  }
+
   // Active nav
   const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('nav ul li a, .mobile-menu a').forEach(link => {

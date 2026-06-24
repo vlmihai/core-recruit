@@ -23,6 +23,16 @@ nav ul li a:hover,nav ul li a.active{color:var(--blue)}
 .mobile-menu a{text-decoration:none;color:var(--text-mid);font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase}
 .mobile-menu.open{display:flex}
 
+/* TAGLINE STRIP */
+.tagline-strip{display:flex;align-items:center;justify-content:center;gap:1.5rem;height:36px;background:var(--white);border-bottom:1px solid var(--border);position:relative;z-index:98}
+.tagline-strip::before,.tagline-strip::after{content:'';flex:1;height:1px;background:var(--border);max-width:180px}
+.tagline-strip span{font-size:0.7rem;font-style:italic;color:var(--text-muted);letter-spacing:0.06em;white-space:nowrap}
+@media(max-width:960px){
+  .tagline-strip{height:30px}
+  .tagline-strip::before,.tagline-strip::after{max-width:50px}
+  .tagline-strip span{font-size:0.65rem}
+}
+
 /* BUTTONS */
 .btn-primary{background:var(--blue);color:white;border:none;padding:0.85rem 2.2rem;font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.25s;text-decoration:none;display:inline-block}
 .btn-primary:hover{background:var(--blue-mid);transform:translateY(-1px)}
