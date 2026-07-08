@@ -24,9 +24,20 @@
     .legal-main { padding: 3rem 1.5rem 4rem; }
   }
 
-  .page-hero { text-align: center; }
-  .page-hero h1 { white-space: nowrap; font-size: clamp(1.3rem, 3.2vw, 2.6rem); }
-  .page-hero p { white-space: nowrap; }
+  .page-hero,
+  .page-hero-eyebrow {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .page-hero h1,
+  .page-hero p {
+    text-align: center !important;
+    white-space: nowrap;
+    max-width: 100%;
+    font-size: clamp(1.1rem, 3vw, 2.6rem);
+  }
+  .page-hero p { font-size: 0.95rem; }
 
   @media (max-width: 700px) {
     .page-hero h1,
