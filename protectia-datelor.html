@@ -23,6 +23,15 @@
   @media (max-width: 960px) {
     .legal-main { padding: 3rem 1.5rem 4rem; }
   }
+
+  .page-hero { text-align: center; }
+  .page-hero h1 { white-space: nowrap; font-size: clamp(1.3rem, 3.2vw, 2.6rem); }
+  .page-hero p { white-space: nowrap; }
+
+  @media (max-width: 700px) {
+    .page-hero h1,
+    .page-hero p { white-space: normal; font-size: inherit; }
+  }
 </style>
 </head>
 <body>
